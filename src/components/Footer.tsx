@@ -57,19 +57,7 @@ const Footer = () => {
             ))}
           </nav>
         </div>
-
-        {/* About Nike Links */}
-        <div className="w-[20%]">
-          <nav className="flex flex-col text-xs">
-            <h2 className="uppercase tracking-wide mb-4">About Nike</h2>
-            {aboutLinks.map((link, index) => (
-              <a key={index} href="#" className="mt-2 hover:text-gray-400">
-                {link}
-              </a>
-            ))}
-          </nav>
-        </div>
-
+        
         {/* Nike Logo */}
         <div className="w-[337px] flex justify-start">
           <img
@@ -83,14 +71,7 @@ const Footer = () => {
 
       {/* Footer Bottom Section */}
       <div className="flex justify-between items-center mt-14">
-        {/* Country Info and Copyright */}
-        <div className="flex items-center text-xs">
-          <img
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/afe336cc16b84f5e88f05eaaebfef4fd/2c3cf51a60dcad8155a1c35df68f880049064af1bef7db01392ef898da56d0bb?apiKey=afe336cc16b84f5e88f05eaaebfef4fd&"
-            alt="India location icon"
-            className="w-[18px] mr-2"
-          />
+        
           <span>India</span>
         </div>
         <div className="text-xs text-zinc-500">
