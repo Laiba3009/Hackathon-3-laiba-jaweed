@@ -1,5 +1,6 @@
-import React from 'react';
-import { FaEnvelope, FaLocationArrow, FaMobile } from 'react-icons/fa';
+import React from 'react'; 
+import { FaMobile } from 'react-icons/fa6';
+import { FaEnvelope } from 'react-icons/fa6';
 import { FaLocationPin } from 'react-icons/fa6';
 import { RiMessage2Fill } from 'react-icons/ri';
 
@@ -8,10 +9,10 @@ const PaymentOptions = () => {
   return (
     <div className="p-4 w-full max-w-screen-md mx-auto">
       <p className="text-gray-900 text-base mb-2" style={{ fontFamily: 'Helvetica Neue', fontWeight: 400, lineHeight: '28px' }}>
-        Visa, Mastercard, Diners Club, Discover, American Express, Visa Electron, Maestro
+        Visa Mastercard Diners Club Discover American Express Visa Electron Maestro
       </p>
       <p className="text-gray-900 text-sm mb-2" style={{ fontFamily: 'Helvetica Neue', fontWeight: 400, fontSize: '15px', lineHeight: '28px' }}>
-        If you enter your PAN information at checkout, you'll be able to pay for your order with PayTM or a local credit or debit card.
+        If you enter your PAN information at checkout you be able to pay for your order with PayTM or a local credit or debit card.
       </p>
       <p className="text-gray-900 text-base" style={{ fontFamily: 'Helvetica Neue', fontWeight: 400, lineHeight: '28px' }}>
         Apple Pay
@@ -28,8 +29,8 @@ const ContactUs = () => {
       <div className="mb-8">
         <FaMobile className="w-[40px] h-[40px] mx-auto" />
         <p className="font-semibold">000 800 919 0566</p>
-        <p>Products & Orders: 24 hours a day,<br />7 days a week</p>
-        <p>Company Info & Enquiries: 07:30 - 16:30, Monday - Friday</p>
+        <p>Products & Orders: 24 hours a day<br />7 days a week</p>
+        <p>Company Info  Enquiries: 07:30 - 16:30, Monday - Friday</p>
       </div>
       <div className="mb-8">
         <RiMessage2Fill className="w-[40px] h-[40px] mx-auto" />
@@ -37,7 +38,7 @@ const ContactUs = () => {
       </div>
       <div className="mb-8">
         <FaEnvelope className="w-[40px] h-[40px] mx-auto" />
-        <p>We'll reply within<br />five business days</p>
+        <p>We ll reply within<br />five business days</p>
       </div>
       <div>
         <FaLocationPin className="w-[40px] h-[40px] mx-auto" />
@@ -58,10 +59,10 @@ const FAQs = () => {
           Does my card need international purchases enabled?
         </p>
         <p className="text-lg mt-8">
-          Yes, we recommend asking your bank to enable international purchases on your card. You will be notified at checkout if international purchases need to be enabled.
+          Yes we recommend asking your bank to enable international purchases on your card. You will be notified at checkout if international purchases need to be enabled.
         </p>
         <p className="text-sm mt-2 italic">
-          Please note, some banks may charge a small transaction fee for international orders.
+          Please note some banks may charge a small transaction fee for international orders.
         </p>
       </div>
     </div>
