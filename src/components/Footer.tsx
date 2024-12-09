@@ -12,11 +12,6 @@ const Footer = () => {
     "Contact Us On Nike.com Inquiries",
     "Contact Us On All Other Inquiries",
   ];
-
-  const aboutLinks = ["News", "Careers", "Investors", "Sustainability"];
-
-  
-
   const footerLinks = [
     "Guides",
     "Terms of Sale",
@@ -28,9 +23,6 @@ const Footer = () => {
     <footer className="flex flex-col bg-neutral-900 p-10 text-white">
       {/* Main Footer Content */}
       <div className="flex flex-wrap gap-10 w-full">
-        {/* Main Links */}
-        
-        {/* Get Help Links */}
         <div className="w-[51%]">
           <nav className="flex flex-col text-xs">
             <h2 className="uppercase tracking-wide mb-4">Get Help</h2>
