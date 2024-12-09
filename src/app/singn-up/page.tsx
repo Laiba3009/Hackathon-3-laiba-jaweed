@@ -9,7 +9,7 @@ const Header = () => {
         BECOME A NIKE MEMBER
       </h1>
       <p className="text-sm font-normal text-gray-500 my-2">
-        Create your Nike Member profile and get first access to the very best of Nike products, inspiration and community.
+        Create your Nike Member profile and get first access to the very best of Nike products inspiration and community.
       </p>
     </header>
   );
@@ -49,7 +49,7 @@ const FormFields = () => {
         <GenderSelection />
         <TermsAndConditions />
         <p className="text-xs text-gray-500">
-          By creating an account, you agree to Nikes <a href="#" className="underline">Privacy Policy</a> and <a href="#" className="underline">Terms of Use</a>.
+          By creating an account you agree to Nikes <a href="#" className="underline">Privacy Policy</a> and <a href="#" className="underline">Terms of Use</a>.
         </p>
         <JoinButton />
       </form>
@@ -126,7 +126,7 @@ const TermsAndConditions = () => {
         className="w-5 h-5 mr-2"
       />
       <label className="text-xs text-gray-600">
-        Sign up for emails to get updates from Nike on products, offers and your Member benefits
+        Sign up for emails to get updates from Nike on products offers and your Member benefits
       </label>
     </div>
   );

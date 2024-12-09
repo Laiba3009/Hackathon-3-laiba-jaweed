@@ -63,7 +63,7 @@ export default function Hero() {
             />
             <div className="mt-4">
               <h3 className=" text-lg  font-sans font-[500] text-center">Nike Air Max Pulse</h3>
-              <p className="text-gray-500 text-sm text-center">Women's Shoes</p>
+              <p className="text-gray-500 text-sm text-center">Womens Shoes</p>
               <p className="font-bold mt-1 text-center">₹ 13,995</p>
             </div>
           </div>
@@ -78,7 +78,7 @@ export default function Hero() {
             />
             <div className="mt-4">
               <h3 className="font-medium text-lg   text-center">Nike Air Max Pulse</h3>
-              <p className="text-gray-500 text-sm text-center">Men's Shoes</p>
+              <p className="text-gray-500 text-sm text-center">Mens Shoes</p>
               <p className="font-bold mt-1 text-center">₹ 13,995</p>
             </div>
           </div>
@@ -93,7 +93,7 @@ export default function Hero() {
             />
             <div className="mt-4">
               <h3 className="font-medium text-lg text-center">Nike Air Max 97 SE</h3>
-              <p className="text-gray-500 text-sm text-center">Men's Shoes</p>
+              <p className="text-gray-500 text-sm text-center">Mens Shoes</p>
               <p className="font-bold mt-1 text-center">₹ 16,995</p>
             </div>
           </div>
@@ -174,7 +174,7 @@ export default function Hero() {
       </div>
 
       <div className="relative bg-white py-16 px-4">
-        <h2 className="text-3xl font-bold text-gray-900 mb-12 text-left">Don't Miss</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-12 text-left">Dont Miss</h2>
 
         <div className="max-w-7xl mx-auto text-center">
           <Image
@@ -188,7 +188,7 @@ export default function Hero() {
             FLIGHT ESSENTIALS
           </h1>
           <p className="mt-4 text-lg text-gray-700">
-            Your built-to-last, all-week wears—but with style only Jordan Brand can deliver.
+            Your built-to-last all-week wears—but with style only Jordan Brand can deliver.
           </p>
           <button className="mt-6 px-6 py-3 bg-black text-white font-medium rounded-full hover:bg-gray-800 transition">
             Shop
@@ -254,17 +254,17 @@ export default function Hero() {
             <ul className="space-y-2 text-sm">
               <li>All Clothing</li>
               <li>Modest Wear</li>
-              <li>Hoodies & Pullovers</li>
-              <li>Shirts & Tops</li>
+              <li>Hoodies  Pullovers</li>
+              <li>Shirts  Tops</li>
             </ul>
           </div>
           <div className="text-center">
-            <h3 className="font-bold mb-4">Kids'</h3>
+            <h3 className="font-bold mb-4">Kids</h3>
             <ul className="space-y-2 text-sm">
-              <li>Infant & Toddler Shoes</li>
-              <li>Kids' Shoes</li>
-              <li>Kids' Jordan Shoes</li>
-              <li>Kids' Basketball Shoes</li>
+              <li>Infant  Toddler Shoes</li>
+              <li>Kids Shoes</li>
+              <li>Kids Jordan Shoes</li>
+              <li>Kids Basketball Shoes</li>
             </ul>
           </div>
         </div>

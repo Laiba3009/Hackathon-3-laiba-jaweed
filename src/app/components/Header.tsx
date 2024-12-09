@@ -36,7 +36,7 @@ export default function Header() {
 
       {/* Center section (Navigation Links) */}
       <nav className="flex gap-4 md:gap-6 text-gray-700 font-medium md:text-[16px] sm:text-[14px] text-[10px] ">
-        <Link href="#" className="hover:text-black whitespace-nowrap">New & Featured</Link>
+        <Link href="#" className="hover:text-black whitespace-nowrap">New  Featured</Link>
         <Link href="#" className="hover:text-black whitespace-nowrap">Men</Link>
         <Link href="#" className="hover:text-black whitespace-nowrap">Women</Link>
         <Link href="#" className="hover:text-black whitespace-nowrap">Kids</Link>

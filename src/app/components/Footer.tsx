@@ -54,7 +54,7 @@ const Footer = function () {
                 <div className="flex mb-4 md:mb-0 gap-2">
                     <IoLocationOutline className="text-sm" />
                     <p>India</p>
-                    <p>© 2023 Nike, Inc. All Rights Reserved</p>
+                    <p>© 2023 Nike Inc. All Rights Reserved</p>
                 </div>
                 <div className="flex flex-wrap gap-4">
                     <Link href="#" className="hover:underline">Guides</Link>

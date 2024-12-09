@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaEnvelope, FaLocationArrow, FaMobile } from 'react-icons/fa';
+import { FaEnvelope, FaMobile } from 'react-icons/fa';
 import { IoLocationOutline } from 'react-icons/io5';
 import { RiMessage2Fill } from 'react-icons/ri';
 
@@ -8,10 +8,10 @@ const PaymentOptions = () => {
   return (
     <div className="p-4 w-full max-w-screen-md mx-auto">
       <p className="text-gray-900 text-base mb-2" style={{ fontFamily: 'Helvetica Neue', fontWeight: 400, lineHeight: '28px' }}>
-        Visa, Mastercard, Diners Club, Discover, American Express, Visa Electron, Maestro
+        Visa Mastercard Diners Club Discover American Express, Visa Electron, Maestro
       </p>
       <p className="text-gray-900 text-sm mb-2" style={{ fontFamily: 'Helvetica Neue', fontWeight: 400, fontSize: '15px', lineHeight: '28px' }}>
-        If you enter your PAN information at checkout, you'll be able to pay for your order with PayTM or a local credit or debit card.
+        If you enter your PAN information at checkout youll be able to pay for your order with PayTM or a local credit or debit card.
       </p>
       <p className="text-gray-900 text-base" style={{ fontFamily: 'Helvetica Neue', fontWeight: 400, lineHeight: '28px' }}>
         Apple Pay
@@ -20,7 +20,6 @@ const PaymentOptions = () => {
   );
 };
 
-// ContactUs Component - Now applied directly
 const ContactUs = () => {
   return (
     <div className="flex flex-col items-center text-center p-4">
@@ -28,8 +27,8 @@ const ContactUs = () => {
       <div className="mb-8">
         <FaMobile className="w-[40px] h-[40px] mx-auto" />
         <p className="font-semibold">000 800 919 0566</p>
-        <p>Products & Orders: 24 hours a day,<br />7 days a week</p>
-        <p>Company Info & Enquiries: 07:30 - 16:30, Monday - Friday</p>
+        <p>Products  Orders: 24 hours a day<br />7 days a week</p>
+        <p>Company Info  Enquiries: 07:30 - 16:30 Monday - Friday</p>
       </div>
       <div className="mb-8">
         <RiMessage2Fill className="w-[40px] h-[40px] mx-auto" />
@@ -37,7 +36,7 @@ const ContactUs = () => {
       </div>
       <div className="mb-8">
         <FaEnvelope className="w-[40px] h-[40px] mx-auto" />
-        <p>We'll reply within<br />five business days</p>
+        <p>Well reply within<br />five business days</p>
       </div>
       <div>
         <IoLocationOutline className="w-[40px] h-[40px] mx-auto" />
@@ -58,7 +57,7 @@ const FAQs = () => {
           Does my card need international purchases enabled?
         </p>
         <p className="text-lg mt-8">
-          Yes, we recommend asking your bank to enable international purchases on your card. You will be notified at checkout if international purchases need to be enabled.
+          Yes we recommend asking your bank to enable international purchases on your card. You will be notified at checkout if international purchases need to be enabled.
         </p>
         <p className="text-sm mt-2 italic">
           Please note, some banks may charge a small transaction fee for international orders.
@@ -74,9 +73,9 @@ const HelpSection = () => {
     <div className="flex flex-col lg:flex-row justify-between p-8 bg-white max-w-screen-xl mx-auto">
       <div className="flex-1 mb-8 lg:mb-0">
         <h1 className="text-2xl font-bold mb-4">WHAT PAYMENT OPTIONS CAN I USE ON NIKE ORDERS?</h1>
-        <p className="mb-4">We want to make buying your favourite Nike shoes and gear online fast and easy, and we accept the following payment options:</p>
+        <p className="mb-4">We want to make buying your favourite Nike shoes and gear online fast and easy and we accept the following payment options:</p>
         <PaymentOptions />
-        <p className="mt-4">Nike Members can store multiple debit or credit cards in their profile for faster checkout. If you're not already a Member, <a href="#" className="text-blue-500">join us</a> today.</p>
+        <p className="mt-4">Nike Members can store multiple debit or credit cards in their profile for faster checkout. If youre not already a Member<a href="#" className="text-blue-500">join us</a> today.</p>
         <div className="flex space-x-4 mt-4">
           <button className="bg-black text-white px-4 py-2">JOIN US</button>
           <button className="bg-black text-white px-4 py-2">SHOP NIKE</button>
