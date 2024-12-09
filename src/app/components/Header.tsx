@@ -7,18 +7,17 @@ import { BiShoppingBag } from "react-icons/bi";
 export default function Header() {
   return (
     <header className=''>
-    {/* Top bar */}
     <div className="bg-[#F5F5F5] flex justify-between items-center px-6 py-2 md:text-[11px] sm:text-[9px] text-[8px] font-medium text-gray-500">
       <Image
-       src= "/assets/logo.png"
-        alt={''} width={24} height={24}
+       src= "/assests/logo2.svg"
+        alt={'logo'} width={24} height={24}
         className="w-[24px] h-[24px]"/>
       
       <div className="flex md:gap-4 sm:gap-3 gap-2">
         <Link href="#" className="hover:text-gray-800">Find Link Store</Link>
         <Link href="#" className="hover:text-gray-800">Help</Link>
-        <Link href="/contactus" className="hover:text-gray-800">Join Us</Link>
-        <Link href="#" className="hover:text-gray-800">Sign In</Link>
+        <Link href="/contact-us" className="hover:text-gray-800">Join Us</Link>
+        <Link href="/singn-up" className="hover:text-gray-800">Sign In</Link>
       </div>
     </div>
 
@@ -27,7 +26,7 @@ export default function Header() {
       {/* Left section (Logo) */}
       <div className="flex items-center">
         <Image
-          src="/assets/nike.png"
+          src="/assests/nike.png"
           alt="Nike Logo"
           className="md:w-[78px] sm:w-[60px] w-[30px]"
           width={30}
