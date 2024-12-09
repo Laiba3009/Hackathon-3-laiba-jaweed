@@ -1,4 +1,4 @@
-import * as React from "react";
+import  React from "react";
 import { FaFacebook, FaTwitter } from "react-icons/fa";
 import { ImInstagram } from "react-icons/im";
 import { TiSocialYoutubeCircular } from "react-icons/ti";
@@ -15,13 +15,7 @@ const Footer = () => {
 
   const aboutLinks = ["News", "Careers", "Investors", "Sustainability"];
 
-  const mainLinks = [
-    "Find A Store",
-    "Become A Member",
-    "Sign Up for Email",
-    "Send Us Feedback",
-    "Student Discounts",
-  ];
+  
 
   const footerLinks = [
     "Guides",
@@ -35,17 +29,7 @@ const Footer = () => {
       {/* Main Footer Content */}
       <div className="flex flex-wrap gap-10 w-full">
         {/* Main Links */}
-        <div className="w-[29%]">
-          <nav className="flex flex-col text-xs">
-            <h2 className="uppercase tracking-wide mb-4">Main Links</h2>
-            {mainLinks.map((link, index) => (
-              <a key={index} href="#" className="mt-2 hover:text-gray-400">
-                {link}
-              </a>
-            ))}
-          </nav>
-        </div>
-
+        
         {/* Get Help Links */}
         <div className="w-[51%]">
           <nav className="flex flex-col text-xs">
