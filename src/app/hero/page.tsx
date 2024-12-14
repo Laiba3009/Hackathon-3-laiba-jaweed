@@ -5,7 +5,7 @@ export default function Hero() {
     <div className="w-screen bg-gray-100">
       <div className="max-w-7xl mx-auto text-center">
         <Image
-          src="/assests/hero.png" // Replace with your image path
+          src="/assests/hero.png" 
           alt="nike"
           width={1200}
           height={600}

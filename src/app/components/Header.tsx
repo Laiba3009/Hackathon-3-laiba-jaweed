@@ -15,9 +15,9 @@ export default function Header() {
       
       <div className="flex md:gap-4 sm:gap-3 gap-2">
         <Link href="#" className="hover:text-gray-800">Find Link Store</Link>
-        <Link href="#" className="hover:text-gray-800">Help</Link>
-        <Link href="/contact-us" className="hover:text-gray-800">Join Us</Link>
-        <Link href="/singn-up" className="hover:text-gray-800">Sign In</Link>
+        <Link href="/contact-us" className="hover:text-gray-800">Help</Link>
+        <Link href="/join-us" className="hover:text-gray-800">Join Us</Link>
+        <Link href="/login" className="hover:text-gray-800">Sign In</Link>
       </div>
     </div>
 
@@ -36,6 +36,7 @@ export default function Header() {
 
       {/* Center section (Navigation Links) */}
       <nav className="flex gap-4 md:gap-6 text-gray-700 font-medium md:text-[16px] sm:text-[14px] text-[10px] ">
+      <Link href="/hero" className="hover:text-black whitespace-nowrap">Home</Link>
         <Link href="#" className="hover:text-black whitespace-nowrap">New  Featured</Link>
         <Link href="#" className="hover:text-black whitespace-nowrap">Men</Link>
         <Link href="#" className="hover:text-black whitespace-nowrap">Women</Link>
@@ -56,7 +57,10 @@ export default function Header() {
           <FaSearch className="absolute right-3 top-2.5 text-gray-500" />
         </div>
         <FaRegHeart className="text-gray-700 md:w-[24px] md:h-[24px] sm:w-[20px] sm:h-[20px] w-[16px] h-[16px]  cursor-pointer hover:text-black" />
-        <BiShoppingBag  className="text-gray-700 md:w-[24px] md:h-[24px] sm:w-[20px] sm:h-[20px] w-[16px] h-[16px] cursor-pointer hover:text-black" />
+        <Link href="/checkout" className="hover:text-gray-800"><BiShoppingBag className="text-gray-700 md:w-[24px] md:h-[24px]
+         sm:w-[20px] sm:h-[20px] w-[16px] h-[16px] cursor-pointer hover:text-black" />
+        </Link>
+
       </div>
     </div>
 

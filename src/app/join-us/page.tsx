@@ -5,10 +5,10 @@ import Image from 'next/image';
 const Header = () => {
   return (
     <header>
-      <h1 className="text-lg font-bold text-gray-900 my-4">
+      <h1 className="text-lg text-center font-bold text-gray-900 my-4"> 
         BECOME A NIKE MEMBER
       </h1>
-      <p className="text-sm font-normal text-gray-500 my-2">
+      <p className="text-sm font-normal text-center text-gray-500 my-2">
         Create your Nike Member profile and get first access to the very best of Nike products inspiration and community.
       </p>
     </header>
@@ -17,7 +17,7 @@ const Header = () => {
 
 const FormFields = () => {
   return (
-    <div className="p-4 w-[380px] h-[850px] max-w-md mx-auto mb-8">
+    <div className="p-4 w-[380px] h-[850px] max-w-md mx-auto">
       <form className="space-y-4">
         <input
           type="email"
@@ -142,7 +142,7 @@ const JoinButton = () => {
 
 const Footer = () => {
   return (
-    <footer className="flex justify-center items-center py-4">
+    <footer className="flex justify-center items-center py-4 mb-2 ">
       <p className="text-gray-600 text-center text-xs">
         Already a Member?{' '}
         <a href="/signin" className="text-black font-semibold">
@@ -153,7 +153,7 @@ const Footer = () => {
   );
 };
 
-const Singnup = () => {
+const JoinUs = () => {
   return (
     <div className="flex flex-col justify-center items-center h-screen">
       <Header />
@@ -163,4 +163,4 @@ const Singnup = () => {
   );
 };
 
-export default Singnup;
+export default JoinUs;
