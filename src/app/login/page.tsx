@@ -13,7 +13,6 @@ const Login = () => {
 
   return (
     <div className="flex flex-col justify-center  items-center bg-white p-8 w-96">
-      <img src="./assets/image.svg" alt="Nike Logo" className="mb-4" />
       <h1 className="text-center font-bold text-lg text-black mb-8">
         YOUR ACCOUNT FOR EVERYTHING NIKE
       </h1>
@@ -53,7 +52,7 @@ const Login = () => {
           </a>
         </div>
         <p className="text-center text-gray-600 text-xs mb-4">
-          By logging in, you agree to Nike's{' '}
+          By logging in, you agree to Nikes{' '}
           <a href="#" className="underline">
             Privacy Policy
           </a>{' '}

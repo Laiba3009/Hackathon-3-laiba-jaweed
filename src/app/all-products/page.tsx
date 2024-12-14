@@ -1,9 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
-import filterIcon from "@public/images/icons/filter.svg";
-import dropdownIcon from "@public/images/icons/dropdown.svg";
-import dropdownUpIcon from "@public/images/icons/dropdown-up.svg";
 import ProductList from "../components/ProductList";
 import Link from "next/link";
 
@@ -57,7 +53,8 @@ const Page = () => {
         <div className="my-10 border-t-2 pt-4">
           <div className="flex justify-between pb-4">
             <p>Gender</p>
-            <Image src={dropdownUpIcon} alt="Drop Down Up" loading="lazy" />
+            
+
           </div>
           <div>
             <input type="checkbox" id="men" />
@@ -83,7 +80,6 @@ const Page = () => {
         <div className="my-10 border-t-2 pt-4">
           <div className="flex justify-between pb-4">
             <p>Shop By Price</p>
-            <Image src={dropdownUpIcon} alt="Drop Down Up" loading="lazy" />
           </div>
           <div>
             <input type="checkbox" id="under-2500" />
@@ -119,12 +115,9 @@ const Page = () => {
             aria-label="Show Sidebar"
           >
             Show Filters{" "}
-            <Image
-              className="ms-2"
-              src={filterIcon}
-              alt="Filter"
-              loading="lazy"
-            />
+           
+
+
           </button>
           <button
             className="hidden lg:flex"
@@ -132,23 +125,17 @@ const Page = () => {
             aria-label={isSidebarVisible ? "Hide Sidebar" : "Show Sidebar"}
           >
             {isSidebarVisible ? "Hide Filters" : "Show Filters"}{" "}
-            <Image
-              className="ms-2"
-              src={filterIcon}
-              alt="Filter"
-              loading="lazy"
-            />
+           
+
+
           </button>
 
           {/* Sort By Button */}
           <div className="flex items-center">
             Sort By{" "}
-            <Image
-              className="ms-2"
-              src={dropdownIcon}
-              alt="Dropdown"
-              loading="lazy"
-            />
+        
+
+
           </div>
         </div>
 

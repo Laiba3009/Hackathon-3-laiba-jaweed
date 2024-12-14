@@ -12,7 +12,7 @@ const OrderPage = () => {
         <div className="mb-8">
           <h2 className="text-lg font-medium mb-4 text-gray-900">How would you like to get your order?</h2>
           <p className="text-sm mb-4 text-gray-600">
-            Customs regulation for India require a copy of the recipient’s KYC. The address on the KYC needs to match the shipping address. Our courier will contact you via SMS/email to obtain a copy of your KYC. The KYC will be stored securely and used solely for the purpose of clearing customs (including sharing it with customs officials) for all orders and returns. If your KYC does not match your shipping address, please click the link for more information. <a href="#" className="text-blue-600">Learn More</a>
+            Customs regulation for India require a copy of the recipients KYC. The address on the KYC needs to match the shipping address. Our courier will contact you via SMS/email to obtain a copy of your KYC. The KYC will be stored securely and used solely for the purpose of clearing customs (including sharing it with customs officials) for all orders and returns. If your KYC does not match your shipping address please click the link for more information. <a href="#" className="text-blue-600">Learn More</a>
           </p>
           <div className="bg-white p-4 rounded border border-gray-300">
             <input type="text" placeholder="Deliver it" className="w-full text-base text-gray-900" />
@@ -69,7 +69,7 @@ const OrderPage = () => {
         </div>
 
         <div className="py-5 w-full max-w-md">
-          <h2 className="text-xl font-medium mb-7 text-gray-900">What's your contact information?</h2>
+          <h2 className="text-xl font-medium mb-7 text-gray-900">Whats your contact information?</h2>
           <div className="mb-8">
             <div className="bg-white p-4 rounded border border-gray-300 mb-2">
               <input type="text" placeholder="Email" className="w-full text-base text-gray-900" />
@@ -85,7 +85,7 @@ const OrderPage = () => {
         </div>
 
         <div className="p-5">
-          <h2 className="text-xl font-medium text-black mb-7">What's your PAN?</h2>
+          <h2 className="text-xl font-medium text-black mb-7">Whats your PAN?</h2>
           <div className="bg-white rounded-md p-4 mb-2">
             <input
               type="text"
@@ -96,7 +96,7 @@ const OrderPage = () => {
             />
           </div>
           <p className="text-xs text-gray-600 mb-4">
-            Enter your PAN to enable payment with UPI, Net Banking or local card methods
+            Enter your PAN to enable payment with UPI Net Banking or local card methods
           </p>
           <div className="flex items-center">
             <input
@@ -128,10 +128,10 @@ const OrderPage = () => {
             </div>
           </div>
           <p className="text-sm text-gray-500 mb-4">
-            (The total reflects the price of your order, including all duties and taxes)
+            (The total reflects the price of your order including all duties and taxes)
           </p>
           <div className="mb-4">
-            <span className="font-bold text-gray-900">Arrives Mon, 27 Mar - Wed, 12 Apr</span>
+            <span className="font-bold text-gray-900">Arrives Mon 27 Mar - Wed 12 Apr</span>
           </div>
           <div className="flex flex-col mb-4">
           <Image
@@ -141,7 +141,7 @@ const OrderPage = () => {
               height={300}
               className="mx-auto"
             />
-              <p className="text-gray-900">Nike Dri-FIT ADV TechKnit Ultra Men's Short-Sleeve Running Top</p>
+              <p className="text-gray-900">Nike Dri-FIT ADV TechKnit Ultra Mens Short-Sleeve Running Top</p>
               <p className="text-gray-600">Qty 1</p>
               <p className="text-gray-600">Size L</p>
               <p className="text-gray-600">₹ 3,895.00</p>
@@ -157,7 +157,7 @@ const OrderPage = () => {
               className="mx-auto"
             />
             <div>
-              <p className="text-gray-900">Nike Air Max 97 SE Men's Shoes</p>
+              <p className="text-gray-900">Nike Air Max 97 SE Mens Shoes</p>
               <p className="text-gray-600">Qty 1</p>
               <p className="text-gray-600">Size UK 8</p>
               <p className="text-gray-600">₹ 16,995.00</p>

@@ -9,14 +9,10 @@ interface ProductCardProps {
   price: string;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ imageId, name, description, size, quantity, price }) => {
+const ProductCard: React.FC<ProductCardProps> = ({  name, description, size, quantity, price }) => {
   return (
     <div className="flex border p-6 w-[717px] bg-white">
-      <img 
-        src={`${imageId}`} 
-        alt={name} 
-        className="w-[150px] h-[150px] mr-8"
-      />
+      
       <div className="flex-1 flex flex-col gap-6">
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-7">

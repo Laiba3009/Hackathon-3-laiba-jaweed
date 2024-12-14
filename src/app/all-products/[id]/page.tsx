@@ -1,6 +1,4 @@
-import Button from "@/app/components/Button"; // Importing a reusable Button component
-import { nikeProducts } from "@/app/components/Cards/datas"; // Importing the Nike products data
-import Image from "next/image"; // Importing Next.js optimized Image component
+import { nikeProducts } from "@/app/components/Cards/data"; // Importing the Nike products data
 import Link from "next/link"; // Importing Link component for client-side navigation
 
 // This component displays the details of a specific product
@@ -20,12 +18,7 @@ const ProductPage = async ({ params }: { params: Promise<{ id: string }> }) => {
     <div className="grid grid-cols-12 px-8 md:px-20 my-16 md:my-16 gap-0 md:gap-10">
       {/* Left Section: Product Image */}
       <div className="col-span-12 md:col-span-6">
-        <Image
-          src={product.imagesUrls} // URL of the product image
-          alt={product.title} // Alt text for accessibility
-          width={500} // Image width
-          height={500} // Image height
-        />
+       
       </div>
 
       {/* Right Section: Product Details */}
@@ -36,10 +29,10 @@ const ProductPage = async ({ params }: { params: Promise<{ id: string }> }) => {
         {/* Product Description */}
         <p className="py-10">
           Turn style on its head with this crafted take on the Air Jordan 1 Mid.
-          Its "inside out"-inspired construction, including unique layering and
-          exposed foam accents, ups the ante on this timeless Jordan Brand
+          Its inside out-inspired construction including unique layering and
+          exposed foam accents ups the ante on this timeless Jordan Brand
           silhouette. Details like the deco stitching on the Swoosh add coveted
-          appeal, while the unexpected shading, rich mixture of materials, and
+          appeal while the unexpected shading rich mixture of materials and
           aged midsole aesthetic give this release an artisan finish.
         </p>
 
@@ -51,7 +44,6 @@ const ProductPage = async ({ params }: { params: Promise<{ id: string }> }) => {
           <Link href="/cart">
             {" "}
             {/* Link to the cart page */}
-            <Button text="Add to Cart" classNames="rounded-full py-2" />{" "}
             {/* Reusable Button component */}
           </Link>
         </div>
