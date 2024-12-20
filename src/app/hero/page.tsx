@@ -1,4 +1,6 @@
 import Image from "next/image";
+import ShopMensSlider from "../components/ShopMenSlider";
+import ShopWomensSlider from "../components/ShopWomenSlider";
 
 export default function Hero() {
   return (
@@ -41,56 +43,9 @@ export default function Hero() {
           <h2 className="text-2xl text-black font-sans font-[500]">Best of Air Max</h2>
           <div className="flex space-x-2">
             <button className="px-4 py-2 font-bold rounded-full">Shop</button>
-           
           </div>
         </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <div className="border border-white rounded-md p-4">
-            <Image
-              src="/assests/image2.png"
-              alt="Nike Air Max Pulse"
-              width={300}
-              height={300}
-              className="mx-auto"
-            />
-            <div className="mt-4">
-              <h3 className=" text-lg text-black font-sans font-[500] text-center">Nike Air Max Pulse</h3>
-              <p className="text-black text-sm text-center">Womens Shoes</p>
-              <p className="font-bold mt-1 text-center">₹ 13,995</p>
-            </div>
-          </div>
-
-          <div className="border border-white rounded-md p-4">
-            <Image
-              src="/assests/image3.png"
-              alt="Nike Air Max Pulse"
-              width={300}
-              height={300}
-              className="mx-auto"
-            />
-            <div className="mt-4">
-              <h3 className="font-medium text-black text-lg   text-center">Nike Air Max Pulse</h3>
-              <p className="text-black text-sm text-center">Mens Shoes</p>
-              <p className="font-bold  text-stone-800 mt-1 text-center">₹ 13,995</p>
-            </div>
-          </div>
-
-          <div className="border border-white rounded-md p-4">
-            <Image
-              src="/assests/pink.jpg"
-              alt="Nike Air Max 97 SE"
-              width={300}
-              height={300}
-              className="mx-auto"
-            />
-            <div className="mt-4">
-              <h3 className="font-medium text-black text-lg text-center">Nike Air Max 97 SE</h3>
-              <p className="text-black text-sm text-center">Mens Shoes</p>
-              <p className="font-bold text-gray-800 mt-1 text-center">₹ 16,995</p>
-            </div>
-          </div>
-        </div>
+          <ShopMensSlider />
       </div>
 
       <div className="relative bg-white py-16 px-4">
@@ -115,57 +70,21 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="bg-white py-16 px-8">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-left">Gear Up</h2>
 
-          <div className="flex justify-between mb-8">
-            <div className="flex items-center">
-              <h2 className="text-xl font-bold text-gray-900">Shop Men</h2>
-              <button className="p-2 bg-gray-100 rounded-full flex items-center justify-center ml-2">
-                ←
-              </button>
-              <button className="p-2 bg-gray-300 rounded-full flex items-center justify-center ml-2">
-                →
-              </button>
-            </div>
-
-            <div className="flex items-center">
-              <h2 className="text-xl font-bold text-gray-900">Shop Women</h2>
-              <button className="p-2 bg-gray-100 rounded-full flex items-center justify-center ml-2">
-                ←
-              </button>
-              <button className="p-2 bg-gray-300 rounded-full flex items-center justify-center ml-2">
-                →
-              </button>
-            </div>
+      <section className="px-10">
+        <h2 className="font-bold">Gear Up</h2>
+        <div className="grid grid-cols-12">
+          {/* Men's products displayed in a slider */}
+          <div className="col-span-12 md:col-span-6">
+            <ShopMensSlider/>
           </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-12">
-            <div className="text-center flex flex-col items-center">
-              <Image src="/assests/G1.png" alt="Men's Top" width={300} height={300} className="rounded-lg" />
-              <p className="text-gray-900 font-medium mt-4">Nike Dri-FIT ADV TechKnit Ultra</p>
-              <p className="text-gray-900 text-sm">₹ 3,895</p>
-            </div>
-            <div className="text-center flex flex-col items-center">
-              <Image src="/assests/G2.png" alt="Men's Shorts" width={300} height={300} className="rounded-lg" />
-              <p className="text-gray-900 font-medium mt-4">Nike Dri-FIT Challenger</p>
-              <p className="text-gray-900 text-sm">₹ 2,495</p>
-            </div>
-            <div className="text-center flex flex-col items-center">
-              <Image src="/assests/G3.png" alt="Women's Top" width={300} height={300} className="rounded-lg" />
-              <p className="text-gray-900 font-medium mt-4">Nike Dri-FIT ADV Run Division</p>
-              <p className="text-gray-900 text-sm">₹ 5,295</p>
-            </div>
-            <div className="text-center flex flex-col items-center">
-              <Image src="/assests/G4.png" alt="Women's Leggings" width={300} height={300} className="rounded-lg" />
-              <p className="text-gray-900 font-medium mt-4">Nike Fast</p>
-              <p className="text-gray-900 text-sm">₹ 3,795</p>
-            </div>
+          {/* Women's products displayed in a slider */}
+          <div className="col-span-12 md:col-span-6">
+            <ShopWomensSlider/>
           </div>
         </div>
-      </div>
-
+      </section>
+          
       <div className="relative bg-white py-16 px-4">
         <h2 className="text-3xl font-bold text-gray-900 mb-12 text-left">Dont Miss</h2>
 
