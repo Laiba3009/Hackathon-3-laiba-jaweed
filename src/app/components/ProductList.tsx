@@ -1,20 +1,13 @@
 import React from 'react';
-// Import the data from the 'data' file, which contains the list of products
 import { nikeProducts } from './Cards/data'; 
 
-// Import the Card component that will be used to display each product
 import Card from './Cards/Cards';
 
-// ProductList component to display the list of Nike products
 const ProductList = () => {
   return (
-    // A grid layout that displays the products. The number of columns changes based on the screen size.
-    // On small screens, it will display 1 column, 3 columns on medium screens, and 3 columns on large screens.
     <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 pb-10 border-b-2">
       {
-        // Mapping through the nikeProducts array and rendering a Card component for each product
         nikeProducts.map((product) => (
-          // Each Card component needs a unique key prop, which is set to the product's ID
           <Card
             key={product.id}               // Unique identifier for each card
             id={product.id}                // Passing the product's id to the Card component

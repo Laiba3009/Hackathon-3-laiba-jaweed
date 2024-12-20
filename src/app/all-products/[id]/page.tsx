@@ -1,7 +1,7 @@
+import Image from "next/image";
 import { nikeProducts } from "@/app/components/Cards/data"; // Importing the Nike products data
 import Link from "next/link"; // Importing Link component for client-side navigation
 
-// This component displays the details of a specific product
 const ProductPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params; // Extracting the product ID from the URL parameters
 
@@ -18,7 +18,12 @@ const ProductPage = async ({ params }: { params: Promise<{ id: string }> }) => {
     <div className="grid grid-cols-12 px-8 md:px-20 my-16 md:my-16 gap-0 md:gap-10">
       {/* Left Section: Product Image */}
       <div className="col-span-12 md:col-span-6">
-       
+       <Image 
+                src={product.imagesUrls} 
+                alt={product.title} 
+                width={500} 
+                height={500} 
+              />
       </div>
 
       {/* Right Section: Product Details */}
@@ -41,10 +46,12 @@ const ProductPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 
         {/* Add to Cart Button */}
         <div className="flex mt-6">
-          <Link href="/cart">
+          <Link href="/shoping-card">
             {" "}
             {/* Link to the cart page */}
-            {/* Reusable Button component */}
+            <button className="px-6 py-3 bg-black text-white font-medium rounded-full hover:bg-gray-800 transition">
+            Add to Card
+          </button>
           </Link>
         </div>
       </div>

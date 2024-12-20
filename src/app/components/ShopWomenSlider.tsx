@@ -5,7 +5,6 @@ import { nikeProducts } from './Cards/data';
 import Card from './Cards/Cards';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Image from 'next/image';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const ShopWomensSlider = () => {
@@ -49,7 +48,7 @@ const ShopWomensSlider = () => {
       <>
       <div className="flex mb-4 items-center justify-end">
             <div className="flex items-center gap-4">
-              <p>Shop Women's</p>
+              <p>Shop Womens</p>
               <div className="bg-[#F5F5F5] px-5 py-4 rounded-full cursor-pointer" onClick={() => sliderRef.current?.slickPrev()}>
                <FaChevronLeft />
               </div>
