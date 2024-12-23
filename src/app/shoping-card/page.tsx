@@ -15,7 +15,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ imageId, name, description, s
       {/* Product Image Section */}
       <div className="w-full md:w-[120px] h-[120px] mb-4 md:mb-0 md:mr-6">
         <img
-          src={`https://example.com/products/${imageId}`} // Replace with actual image URL if needed
+          src={`${imageId}`} // Replace with actual image URL if needed
           alt={name}
           className="w-full h-full object-cover"
         />
@@ -103,7 +103,7 @@ const ShoppingCart: React.FC = () => {
       <FreeDeliveryBanner />
       <h1 className="text-2xl font-bold mb-5">Bag</h1>
       <ProductCard
-        imageId="1:5371"
+        imageId="/images/products/product-38.png"
         name="Nike Dri-FIT ADV TechKnit Ultra"
         description="Men's Short-Sleeve Running Top"
         size="L"
@@ -112,7 +112,7 @@ const ShoppingCart: React.FC = () => {
       />
       <hr className="border border-[#e5e5e5] my-5" />
       <ProductCard
-        imageId="1:5373"
+        imageId="/images/products/product-67.png"
         name="Nike Air Max 97 SE"
         description="Men's Shoes"
         size="8"

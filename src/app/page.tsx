@@ -8,9 +8,8 @@ export default function Home() {
     
         
          <div>
-
+            <Hero />
         <OrderPage />
-          <Hero />
           <ShoppingCart/>
           <Singnup />
          </div>

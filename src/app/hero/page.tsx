@@ -4,7 +4,7 @@ import ShopWomensSlider from "../components/ShopWomenSlider";
 
 export default function Hero() {
   return (
-    <div className="w-screen bg-gray-100">
+    <div className="w-screen py-5 bg-gray-100">
       <div className="max-w-7xl mx-auto text-center">
         <Image
           src="/assests/hero.png" 

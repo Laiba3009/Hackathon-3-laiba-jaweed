@@ -1,11 +1,11 @@
-"use client"
-import React, { useState } from 'react';
-import Image from 'next/image';
+"use client";
+import React, { useState } from "react";
+import Image from "next/image";
 
 const Header = () => {
   return (
     <header>
-      <h1 className="text-lg text-center font-bold text-gray-900 my-4"> 
+      <h1 className="text-lg text-center mt-2 font-bold text-gray-900 my-4">
         BECOME A NIKE MEMBER
       </h1>
       <p className="text-sm font-normal text-center text-gray-500 my-2">
@@ -17,7 +17,7 @@ const Header = () => {
 
 const FormFields = () => {
   return (
-    <div className="p-4 w-[380px] h-[850px] max-w-md mx-auto">
+    <div className="p-4 w-full max-w-md mx-auto">
       <form className="space-y-4">
         <input
           type="email"
@@ -44,12 +44,21 @@ const FormFields = () => {
           placeholder="Date of Birth"
           className="w-full p-2 border border-gray-300 rounded"
         />
-        <p className="text-xs text-gray-500">Get a Nike Member Reward every year on your Birthday.</p>
+        <p className="text-xs text-gray-500">
+          Get a Nike Member Reward every year on your Birthday.
+        </p>
         <CountryDropdown />
         <GenderSelection />
         <TermsAndConditions />
         <p className="text-xs text-gray-500">
-          By creating an account you agree to Nikes <a href="#" className="underline">Privacy Policy</a> and <a href="#" className="underline">Terms of Use</a>.
+          By creating an account you agree to Nikes{" "}
+          <a href="#" className="underline">
+            Privacy Policy
+          </a>{" "}
+          and{" "}
+          <a href="#" className="underline">
+            Terms of Use
+          </a>.
         </p>
         <JoinButton />
       </form>
@@ -67,16 +76,20 @@ const GenderSelection = () => {
   return (
     <div className="flex justify-center items-center space-x-4">
       <div
-        className={`border p-4 cursor-pointer flex flex-col justify-center items-center ${selectedGender === 'Male' ? 'border-blue-500' : 'border-gray-300'}`}
-        onClick={() => handleSelect('Male')}
-        style={{ width: '153.89px', height: '40px' }}
+        className={`border p-4 cursor-pointer flex flex-col justify-center items-center ${
+          selectedGender === "Male" ? "border-blue-500" : "border-gray-300"
+        }`}
+        onClick={() => handleSelect("Male")}
+        style={{ width: "153.89px", height: "40px" }}
       >
         <p className="text-center text-gray-500 font-inter font-normal text-sm leading-tight">Male</p>
       </div>
       <div
-        className={`border p-4 cursor-pointer flex flex-col justify-center items-center ${selectedGender === 'Female' ? 'border-blue-500' : 'border-gray-300'}`}
-        onClick={() => handleSelect('Female')}
-        style={{ width: '153.89px', height: '40px' }}
+        className={`border p-4 cursor-pointer flex flex-col justify-center items-center ${
+          selectedGender === "Female" ? "border-blue-500" : "border-gray-300"
+        }`}
+        onClick={() => handleSelect("Female")}
+        style={{ width: "153.89px", height: "40px" }}
       >
         <p className="text-center text-gray-500 font-inter font-normal text-sm leading-tight">Female</p>
       </div>
@@ -85,7 +98,7 @@ const GenderSelection = () => {
 };
 
 const CountryDropdown = () => {
-  const [selectedCountry, setSelectedCountry] = useState('India');
+  const [selectedCountry, setSelectedCountry] = useState("India");
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCountry(event.target.value);
@@ -96,7 +109,7 @@ const CountryDropdown = () => {
       <select
         value={selectedCountry}
         onChange={handleChange}
-        className="block appearance-none w-full bg-transparent px-4 py-2 pr-8 rounded leading-tight focus:outline-none text-gray-500"
+        className="block appearance-none w-full bg-transparent rounded leading-tight focus:outline-none text-gray-500"
       >
         <option value="India">India</option>
         <option value="USA">USA</option>
@@ -142,9 +155,9 @@ const JoinButton = () => {
 
 const Footer = () => {
   return (
-    <footer className="flex justify-center items-center py-4 mb-2 ">
+    <footer className="flex justify-center items-center py-4 mb-2">
       <p className="text-gray-600 text-center text-xs">
-        Already a Member?{' '}
+        Already a Member?{" "}
         <a href="/signin" className="text-black font-semibold">
           Sign in
         </a>
@@ -155,7 +168,7 @@ const Footer = () => {
 
 const JoinUs = () => {
   return (
-    <div className="flex flex-col justify-center items-center h-screen">
+    <div className="flex flex-col justify-center items-center h-screen px-4 md:px-8 lg:px-12">
       <Header />
       <FormFields />
       <Footer />
