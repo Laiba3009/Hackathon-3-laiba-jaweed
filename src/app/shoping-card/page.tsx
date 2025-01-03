@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Interface for ProductCard Props
 interface ProductCardProps {
   imageId: string;
   name: string;
@@ -9,22 +10,23 @@ interface ProductCardProps {
   price: string;
 }
 
+// ProductCard Component
 const ProductCard: React.FC<ProductCardProps> = ({ imageId, name, description, size, quantity, price }) => {
   return (
     <div className="flex flex-col md:flex-row border p-6 w-full md:w-[717px] bg-white">
       {/* Product Image Section */}
-      <div className="w-full md:w-[120px] h-[120px] mb-4 md:mb-0 md:mr-6">
+      <div className="w-full md:w-[120px] h-[120px] mb-4 md:mb-0 md:mr-6 flex justify-center items-center">
         <img
-          src={`${imageId}`} // Replace with actual image URL if needed
+          src={imageId} // Replace with actual image URL if needed
           alt={name}
-          className="w-full h-full object-cover"
+          className="w-full h-auto object-contain max-h-[120px] max-w-[120px]"
         />
       </div>
 
       {/* Product Info Section */}
       <div className="flex-1 flex flex-col gap-4">
-        <div className="flex justify-between items-center">
-          <div className="flex flex-col gap-4">
+        <div className="flex justify-between items-start flex-wrap">
+          <div className="flex flex-col gap-4 w-full md:w-auto">
             <h2 className="m-0 text-[15px] font-medium leading-[28px] text-[#111]">{name}</h2>
             <p className="m-0 text-[13px] leading-[24px] text-gray-700">{description}</p>
             <p className="m-0 text-[13px] leading-[24px] text-gray-700">Ashen Slate/Cobalt Bliss</p>
@@ -43,11 +45,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ imageId, name, description, s
               </div>
             </div>
           </div>
-          <span className="text-[13px] font-normal leading-[28px] text-[#111]">{price}</span>
+
+          {/* Price Section */}
+          <span className="text-[13px] font-normal leading-[28px] text-[#111] w-full md:w-auto text-right md:text-left mt-4 md:mt-0">{price}</span>
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-4">
+        <div className="flex gap-4 mt-4">
           <button className="w-6 h-6 border-none cursor-pointer bg-gray-200 rounded-full">+</button>
           <button className="w-6 h-6 border-none cursor-pointer bg-gray-200 rounded-full">-</button>
         </div>
@@ -56,6 +60,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ imageId, name, description, s
   );
 };
 
+// Summary Section Component
 const SummarySection: React.FC = () => {
   return (
     <div className="bg-white text-[#111111] p-4 rounded-md w-full md:w-[350.67px]">
@@ -83,6 +88,7 @@ const SummarySection: React.FC = () => {
   );
 };
 
+// Free Delivery Banner Component
 const FreeDeliveryBanner = () => {
   return (
     <div className="flex justify-between items-center p-3.5 bg-white font-inter text-[13px] text-[#111] tracking-[0.5px] leading-[14px]">
@@ -97,6 +103,7 @@ const FreeDeliveryBanner = () => {
   );
 };
 
+// ShoppingCart Component
 const ShoppingCart: React.FC = () => {
   return (
     <div className="flex flex-col gap-5 bg-gray-50 text-black p-5">

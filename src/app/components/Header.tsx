@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import {  FaSearch } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa6";
 import { BiShoppingBag } from "react-icons/bi";
 import { IoMenu } from "react-icons/io5";
@@ -51,8 +51,7 @@ const Header = () => {
 
           {/* Center section (Navigation Links) for large screens */}
           <nav className="hidden md:flex gap-4 md:gap-6 text-gray-700 font-medium md:text-[16px] sm:text-[14px] text-[10px]">
-            <Link href="/hero" className="hover:text-black whitespace-nowrap">Home</Link>
-            <Link href="#" className="hover:text-black whitespace-nowrap">New Featured</Link>
+            <Link href="/hero" className="hover:text-black whitespace-nowrap">New Featured</Link>
             <Link href="/all-products" className="hover:text-black whitespace-nowrap">Men</Link>
             <Link href="/all-products" className="hover:text-black whitespace-nowrap">Women</Link>
             <Link href="/all-products" className="hover:text-black whitespace-nowrap">Kids</Link>
@@ -93,11 +92,10 @@ const Header = () => {
 
       {/* Mobile Menu Button - Positioned at the top-right of the header */}
       <div
-        className="md:hidden block text-3xl text-black cursor-pointer absolute right-5 top-4 z-10"
+        className="md:hidden block text-3xl  text-black cursor-pointer absolute right-5 top-4 z-10"
         onClick={toggleMenu}
       >
-        <IoMenu className="md:hidden block text-3xl text-black cursor-pointer absolute right-5 top-4 z-10"
- />
+        <IoMenu />
       </div>
 
       {/* Mobile Menu Sidebar */}
@@ -110,7 +108,7 @@ const Header = () => {
           {/* Cross Icon - Positioned at the top right of the sidebar */}
           <div className="flex justify-end items-center">
             <Link href="#" onClick={toggleMenu}>
-              <RxCross1 className="text-x lflex justify-end items-center"/>
+              <RxCross1 className="text-xl" />
             </Link>
           </div>
 
@@ -126,7 +124,7 @@ const Header = () => {
 
           {/* Sidebar Links */}
           <ul className="space-y-6 mt-6">
-            <li><Link href="/all-products" onClick={toggleMenu}>New & Featured</Link></li>
+            <li><Link href="/hero" onClick={toggleMenu}>New & Featured</Link></li>
             <li><Link href="/all-products" onClick={toggleMenu}>Men</Link></li>
             <li><Link href="/all-products" onClick={toggleMenu}>Women</Link></li>
             <li><Link href="/all-products" onClick={toggleMenu}>Kids</Link></li>
