@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import Image from 'react'
 
 // Interface for ProductCard Props
 interface ProductCardProps {
@@ -16,7 +17,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ imageId, name, description, s
     <div className="flex flex-col md:flex-row border p-6 w-full md:w-[717px] bg-white">
       {/* Product Image Section */}
       <div className="w-full md:w-[120px] h-[120px] mb-4 md:mb-0 md:mr-6 flex justify-center items-center">
-        <img
+        <Image
           src={imageId} // Replace with actual image URL if needed
           alt={name}
           className="w-full h-auto object-contain max-h-[120px] max-w-[120px]"
