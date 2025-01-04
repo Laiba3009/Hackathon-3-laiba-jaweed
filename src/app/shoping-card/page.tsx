@@ -1,6 +1,5 @@
 import React from 'react'
-import Image from 'react'
-
+import Image from "next/image";
 // Interface for ProductCard Props
 interface ProductCardProps {
   imageId: string;
