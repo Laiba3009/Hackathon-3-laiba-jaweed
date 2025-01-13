@@ -4,9 +4,7 @@ import Singnup from "./join-us/page";
 import ShoppingCart from "./shoping-card/page";
 
 export default function Home() {
-  return (
-    
-        
+  return ( 
          <div>
             <Hero />
         <OrderPage />

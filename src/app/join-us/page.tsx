@@ -1,111 +1,126 @@
-"use client";
-import React from "react";
+import React from 'react';
+import Image from "next/image"; // Next.js component for optimized image handling
+import Link from "next/link"; // For navigation using Next.js Link component
 
-const JoinUs = () => {
+const page = () => {
   return (
-    <div className="flex flex-col justify-start items-center h-screen px-4 md:px-8 lg:px-12">
-      {/* Header */}
-      <header className="text-center mt-2">
-        <h1 className="text-lg font-bold text-gray-900 my-2">
-          BECOME A NIKE MEMBER
-        </h1>
-        <p className="text-sm font-normal text-gray-500 my-2">
-          Create your Nike Member profile and get first access to the very best of Nike products, inspiration, and community.
+    // Container for the page content, flexbox for centering and padding
+    <div className="flex flex-col items-center py-10 px-10 md:px-0">
+      {/* Logo Image */}
+      <Image className="pb-5" src={"/assests/nike.png"} width={40} height={10} alt="Logo" />
+
+      {/* Heading for the page */}
+      <h2 className="uppercase text-center font-bold pb-5">
+        BECOME A NIKE MEMBER
+      </h2>
+
+      {/* Description Text */}
+      <p className='w-80 text-center text-text-secondary-gray pb-5'>
+        Create your Nike Member profile and get first access to the very best of Nike products, inspiration and community.
+      </p>
+
+      {/* Form for user input */}
+      <form action="" className="flex flex-col w-full lg:w-96">
+        
+        {/* Email input field */}
+        <input
+          className="w-50 lg:w-96 border-[#E5E5E5] rounded-md mb-4 px-4 py-3 border-[2px] placeholder:text-text-secondary-gray"
+          type="email"
+          placeholder="Email Address"
+        />
+
+        {/* Password input field */}
+        <input
+          className="w-50 lg:w-96 border-[#E5E5E5] rounded-md mb-4 px-4 py-3 border-[2px] placeholder:text-text-secondary-gray"
+          type="password"
+          placeholder="Password"
+        />
+
+        {/* First Name input field */}
+        <input
+          className="w-50 lg:w-96 border-[#E5E5E5] rounded-md mb-4 px-4 py-3 border-[2px] placeholder:text-text-secondary-gray"
+          type="text"
+          placeholder="First Name"
+        />
+
+        {/* Last Name input field */}
+        <input
+          className="w-50 lg:w-96 border-[#E5E5E5] rounded-md mb-4 px-4 py-3 border-[2px] placeholder:text-text-secondary-gray"
+          type="text"
+          placeholder="Last Name"
+        />
+
+        {/* Date of Birth input field */}
+        <input
+          className="w-50 lg:w-96 border-[#E5E5E5] rounded-md mb-2 px-4 py-3 border-[2px] placeholder:text-text-secondary-gray"
+          type="date"
+          placeholder="Date of Birth"
+        />
+
+        {/* Birthday reward message */}
+        <p className='pb-3 text-text-secondary-gray text-sm text-center'>
+          Get a Nike Member Reward every year on your Birthday.
         </p>
-      </header>
 
-      {/* Form Fields */}
-      <div className="p-4 w-full max-w-md mx-auto flex-1">
-        <form className="space-y-4">
-          <input
-            type="email"
-            placeholder="Email address"
-            className="w-full p-2 border border-gray-300 rounded"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            className="w-full p-2 border border-gray-300 rounded"
-          />
-          <input
-            type="text"
-            placeholder="First Name"
-            className="w-full p-2 border border-gray-300 rounded"
-          />
-          <input
-            type="text"
-            placeholder="Last Name"
-            className="w-full p-2 border border-gray-300 rounded"
-          />
-          <input
-            type="date"
-            placeholder="Date of Birth"
-            className="w-full p-2 border border-gray-300 rounded"
-          />
-          <p className="text-xs text-gray-500">
-            Get a Nike Member Reward every year on your Birthday.
-          </p>
+        {/* Country selection dropdown */}
+        <select
+          className="w-50 lg:w-96 border-[#E5E5E5] rounded-md mb-2 px-4 py-3 border-[2px] placeholder:text-text-secondary-gray"
+          name="country"
+          id="country"
+        >
+          <option className='text-text-secondary-gray' value="IN">India</option>
+          <option className='text-text-secondary-gray' value="US">United States</option>
+          <option className='text-text-secondary-gray' value="UK">United Kingdom</option>
+          <option className='text-text-secondary-gray' value="PK">Pakistan</option>
+          <option className='text-text-secondary-gray' value="CA">Canada</option>
+        </select>
 
-          {/* Country Dropdown */}
-          <div className="relative inline-block w-full bg-white border border-gray-300 rounded">
-            <select className="block appearance-none w-full bg-transparent rounded leading-tight focus:outline-none text-gray-500">
-              <option value="India">India</option>
-              <option value="USA">USA</option>
-              <option value="Canada">Canada</option>
-              <option value="Australia">Australia</option>
-            </select>
+        {/* Gender selection (using divs to visually mimic buttons) */}
+        <div className='flex gap-5 mt-1'>
+          {/* Male gender option */}
+          <div className='border-[#E5E5E5] rounded-md py-4 border-[2px] w-2/4 text-center text-text-secondary-gray'>
+            Male
           </div>
 
-          {/* Gender Selection */}
-          <div className="flex justify-center items-center space-x-4">
-            <div className="border p-4 cursor-pointer flex flex-col justify-center items-center border-gray-300" style={{ width: "153.89px", height: "40px" }}>
-              <p className="text-center text-gray-500 font-inter font-normal text-sm leading-tight">Male</p>
-            </div>
-            <div className="border p-4 cursor-pointer flex flex-col justify-center items-center border-gray-300" style={{ width: "153.89px", height: "40px" }}>
-              <p className="text-center text-gray-500 font-inter font-normal text-sm leading-tight">Female</p>
-            </div>
+          {/* Female gender option */}
+          <div className='border-[#E5E5E5] rounded-md py-4 border-[2px] w-2/4 text-center text-text-secondary-gray'>
+            Female
           </div>
+        </div>
 
-          {/* Terms and Conditions */}
-          <div className="flex items-center pl-8 pr-10">
-            <input
-              type="checkbox"
-              className="w-5 h-5 mr-2"
-            />
-            <label className="text-xs text-gray-600">
-              Sign up for emails to get updates from Nike on products, offers, and your Member benefits.
+        {/* Newsletter checkbox for signing up */}
+        <div className="flex justify-between items-center py-7">
+          <div>
+            <input type="checkbox" id="remember" />
+            <label className="ml-2 pl-2 cursor-pointer text-text-secondary-gray" htmlFor="remember">
+              Sign up for emails to get updates from Nike on products, offers and your Member benefits
             </label>
           </div>
+        </div>
 
-          <p className="text-xs text-gray-500">
-            By creating an account you agree to Nike's{" "}
-            <a href="#" className="underline">
-              Privacy Policy
-            </a>{" "}
-            and{" "}
-            <a href="#" className="underline">
-              Terms of Use
-            </a>.
-          </p>
-
-          {/* Join Button */}
-          <button className="bg-black text-white py-2.5 border border-black rounded cursor-pointer text-sm font-normal w-full flex justify-center items-center">
-            JOIN US
-          </button>
-        </form>
-      </div>
-
-      {/* Footer */}
-      <footer className="flex justify-center items-center py-4 mb-2">
-        <p className="text-gray-600 text-center text-xs">
-          Already a Member?{" "}
-          <a href="/signin" className="text-black font-semibold">
-            Sign in
-          </a>
+        {/* Terms and Conditions section */}
+        <p className="text-text-secondary-gray text-center pb-6">
+          By creating an account, you agree to Nike's{" "}
+          <Link className="underline" href="#">Privacy Policy</Link> and{" "}
+          <Link className="underline" href="#">Terms of Use</Link>.
         </p>
-      </footer>
+
+        {/* Custom Button as a <button> element */}
+        <button
+          type="submit"
+          className="bg-black text-white py-3 px-6 rounded-md font-semibold hover:bg-gray-800 transition duration-300"
+        >
+          JOIN US
+        </button>
+
+        {/* Link to existing member sign-in page */}
+        <p className="text-center">
+          <span className="text-text-secondary-gray">Already a Member? </span>
+          <span className="underline">Join Us.</span>
+        </p>
+      </form>
     </div>
   );
 };
 
-export default JoinUs;
+export default page;
