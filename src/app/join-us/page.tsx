@@ -96,7 +96,7 @@ const Page = () => {
         </div>
 
         <p className="text-xs text-gray-500">
-          By creating an account you agree to Nike's{" "}
+          By creating an account you agree to Nikes{" "}
           <a href="#" className="underline">
             Privacy Policy
           </a>{" "}
