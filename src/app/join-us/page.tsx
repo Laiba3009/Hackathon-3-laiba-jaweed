@@ -3,10 +3,10 @@ import Link from "next/link"; // For navigation using Next.js Link component
 
 const Page = () => {
   return (
-    <div className="flex flex-col justify-start items-center h-screen px-4 md:px-8 lg:px-12">
+    <div className="flex flex-col justify-start items-center mt-3 h-screen px-4 md:px-8 lg:px-12">
       {/* Header */}
       <header className="text-center mt-2">  
-        <h1 className="text-lg font-bold text-gray-900 my-2">
+        <h1 className="text-lg font-bold mt-4 text-gray-900 my-2">
           BECOME A NIKE MEMBER
         </h1>
         <p className="text-sm font-normal text-gray-500 my-2">

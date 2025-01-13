@@ -1,134 +1,118 @@
-import React from 'react'
+import React from "react";
 import Image from "next/image";
-// Interface for ProductCard Props
-interface ProductCardProps {
-  imageId: string;
-  name: string;
-  description: string;
-  size: string;
-  quantity: number;
-  price: string;
-}
 
-// ProductCard Component
-const ProductCard: React.FC<ProductCardProps> = ({ imageId, name, description, size, quantity, price }) => {
+const card = () => {
   return (
-    <div className="flex flex-col md:flex-row border p-6 w-full md:w-[717px] bg-white">
-      {/* Product Image Section */}
-      <div className="w-full md:w-[120px] h-[120px] mb-4 md:mb-0 md:mr-6 flex justify-center items-center">
-        <Image
-          src={imageId} // Replace with actual image URL if needed
-          alt={name}
-          className="w-full h-auto object-contain max-h-[120px] max-w-[120px]"
-        />
-      </div>
+    <div>
+      <div className="container mx-auto px-4 md:px-20 py-10">
+        <div className="bg-gray-100 p-4 rounded-md text-sm text-gray-700 mb-6">
+          <p>
+            <strong>Free Delivery</strong> <br /> Applies to orders of ₹14,000.00 or
+            more.
+            <a href="#" className="text-black underline">
+              View details
+            </a>
+          </p>
+        </div>
 
-      {/* Product Info Section */}
-      <div className="flex-1 flex flex-col gap-4">
-        <div className="flex justify-between items-start flex-wrap">
-          <div className="flex flex-col gap-4 w-full md:w-auto">
-            <h2 className="m-0 text-[15px] font-medium leading-[28px] text-[#111]">{name}</h2>
-            <p className="m-0 text-[13px] leading-[24px] text-gray-700">{description}</p>
-            <p className="m-0 text-[13px] leading-[24px] text-gray-700">Ashen Slate/Cobalt Bliss</p>
-            <div className="flex gap-4">
-              <div className="flex items-center gap-2.5">
-                <span className="text-[13px] text-gray-700">Size</span>
-                <div className="w-[67px] h-[28px] bg-white flex items-center justify-center">
-                  <span className="text-[12px] text-gray-700">{size}</span>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+          <div className="col-span-12 md:col-span-8">
+            <h2 className="text-2xl font-semibold mb-6">Bag</h2>
+
+            <div className="flex flex-col md:flex-row items-start justify-between border-b border-gray-300 pb-6 mb-6">
+              <div className="flex gap-6">
+                <Image src= "/images/products/product-38.png" width={300} height={300} alt="Nike Dri-FIT ADV TechKnit Ultra"
+                  className="w-24 h-24 md:w-32 md:h-32 object-cover rounded-md"/>
+                <div>
+                  <h3 className="text-lg font-medium">
+                    Nike Dri-FIT ADV TechKnit Ultra
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    Men's Short-Sleeve Running Top
+                  </p>
+                  <p className="text-sm text-gray-600">
+                    Ashen Slate/Cobalt Bliss
+                  </p>
+                  <div className="flex gap-20 text-sm text-gray-600 mt-2">
+                    <p>Size: L</p>
+                    <p>Quantity: 1</p>
+                  </div>
                 </div>
               </div>
-              <div className="flex items-center gap-2.5">
-                <span className="text-[13px] text-gray-700">Quantity</span>
-                <div className="w-[58px] h-[28px] bg-white flex items-center justify-center">
-                  <span className="text-[12px] text-gray-700">{quantity}</span>
+              <div className="mt-4 md:mt-0 flex flex-col items-start md:items-end">
+                <p className="font-medium text-gray-800">MRP: ₹3,895.00</p>
+                <div className="flex items-center gap-4 text-gray-600 mt-4">
+                  <button className="hover:text-red-600">
+                    <i className="fas fa-heart"></i>
+                  </button>
+                  <button className="hover:text-red-600">
+                    <i className="fas fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col md:flex-row items-start justify-between border-b border-gray-300 pb-6 mb-6">
+              <div className="flex gap-6">
+                  <Image src="/images/products/product-67.png" width={300} height={300} alt="Nike Dri-FIT ADV TechKnit Ultra"
+                  className="w-24 h-24 md:w-32 md:h-32 object-cover rounded-md"/>
+                <div>
+                  <h3 className="text-lg font-medium">Nike Air Max 97 SE</h3>
+                  <p className="text-sm text-gray-600">Men's Shoes</p>
+                  <p className="text-sm text-gray-600">
+                    Flat Pewter/Light Bone/Black/White
+                  </p>
+                  <div className="flex gap-20 text-sm text-gray-600 mt-2">
+                    <p>Size: 8</p>
+                    <p>Quantity: 1</p>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 md:mt-0 flex flex-col items-start md:items-end">
+                <p className="font-medium text-gray-800">MRP: ₹16,995.00</p>
+                <div className="flex items-center gap-4 text-gray-600 mt-4">
+                  <button className="hover:text-red-600">
+                    <i className="fas fa-heart"></i>
+                  </button>
+                  <button className="hover:text-red-600">
+                    <i className="fas fa-trash"></i>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Price Section */}
-          <span className="text-[13px] font-normal leading-[28px] text-[#111] w-full md:w-auto text-right md:text-left mt-4 md:mt-0">{price}</span>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="flex gap-4 mt-4">
-          <button className="w-6 h-6 border-none cursor-pointer bg-gray-200 rounded-full">+</button>
-          <button className="w-6 h-6 border-none cursor-pointer bg-gray-200 rounded-full">-</button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// Summary Section Component
-const SummarySection: React.FC = () => {
-  return (
-    <div className="bg-white text-[#111111] p-4 rounded-md w-full md:w-[350.67px]">
-      <h2 className="text-[21px] font-medium leading-[33px] mb-4">Summary</h2>
-      <div className="flex justify-between items-center mb-2">
-        <span className="text-[15px] leading-[28px]">Subtotal</span>
-        <div className="flex items-center">
-          <div className="bg-white w-3 h-7 mr-2"></div>
-          <span className="text-[14px] leading-[28px]">₹ 20,890.00</span>
-        </div>
-      </div>
-      <div className="flex justify-between items-center mb-2">
-        <span className="text-[15px] leading-[28px]">Estimated Delivery & Handling</span>
-        <span className="text-[15px] leading-[28px]">Free</span>
-      </div>
-      <hr className="border-t border-[#e5e5e5] mb-2" />
-      <div className="flex justify-between items-center mb-4">
-        <span className="text-[14px] leading-[28px]">Total</span>
-        <span className="text-[14px] leading-[28px]">₹ 20,890.00</span>
-      </div>
-      <button className="bg-black text-white py-2 px-4 rounded-full w-full font-medium text-[15px] leading-[24px]">
+          <div className="col-span-12 md:col-span-4">
+            <h2 className="text-2xl font-semibold mb-6">Summary</h2>
+            <div className="bg-gray-100 p-6 rounded-md">
+              <div className="flex justify-between mb-4">
+                <p>Subtotal</p>
+                <p>₹20,890.00</p>
+              </div>
+              <div className="flex justify-between mb-4">
+                <p>Estimated Delivery & Handling</p>
+                <p>Free</p>
+              </div>
+              <div className="flex justify-between font-semibold text-lg border-t border-gray-300 pt-4">
+                <p>Total</p>
+                <p>₹20,890.00</p>
+              </div>
+            </div>
+            <button className="bg-black text-white py-2 px-4 rounded-full w-full font-medium text-[15px] leading-[24px]">
         Member Checkout
       </button>
-    </div>
-  );
-};
+          </div>
+        </div>
 
-// Free Delivery Banner Component
-const FreeDeliveryBanner = () => {
-  return (
-    <div className="flex justify-between items-center p-3.5 bg-white font-inter text-[13px] text-[#111] tracking-[0.5px] leading-[14px]">
-      <div className="flex flex-col gap-1">
-        <strong className="font-medium">Free Delivery</strong>
-        <div className="flex items-center gap-1.5">
-          <span className="text-[11px] leading-[24px]">Applies to orders of ₹ 14,000.00 or more.</span>
-          <a href="#" className="text-[11px] underline text-[#111] leading-[24px]">View details</a>
+        <div className="mt-10">
+          <h2 className="text-2xl font-semibold mb-4">Favourites</h2>
+          <p className="text-gray-600">
+            There are no items saved to your favourites.
+          </p>
         </div>
       </div>
     </div>
   );
 };
 
-// ShoppingCart Component
-const ShoppingCart: React.FC = () => {
-  return (
-    <div className="flex flex-col gap-5 bg-gray-50 text-black p-5">
-      <FreeDeliveryBanner />
-      <h1 className="text-2xl font-bold mb-5">Bag</h1>
-      <ProductCard
-        imageId="/images/products/product-38.png"
-        name="Nike Dri-FIT ADV TechKnit Ultra"
-        description="Men's Short-Sleeve Running Top"
-        size="L"
-        quantity={1}
-        price="MRP: ₹ 3 895.00"
-      />
-      <hr className="border border-[#e5e5e5] my-5" />
-      <ProductCard
-        imageId="/images/products/product-67.png"
-        name="Nike Air Max 97 SE"
-        description="Men's Shoes"
-        size="8"
-        quantity={1}
-        price="MRP: ₹ 16 995.00"
-      />
-      <SummarySection />
-    </div>
-  );
-};
-
-export default ShoppingCart;
+export default card;

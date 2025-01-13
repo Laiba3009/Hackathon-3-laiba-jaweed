@@ -1,11 +1,11 @@
 "use client";
-import Link from "next/link"; 
+import Link from "next/link";
 import { FaTwitter, FaFacebook, FaYoutube, FaInstagram } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
 
 const Footer = function () {
   return (
-    <footer className="bg-black text-white py-8 px-6">
+    <footer className="bg-black text-white py-8 px-4 w-full">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* Column 1: Find a Store */}
         <div>
@@ -42,7 +42,7 @@ const Footer = function () {
         </div>
 
         {/* Column 4: Social Media Icons */}
-        <div className="flex justify-start lg:justify-end items-start gap-4">
+        <div className="flex justify-start lg:justify-end items-start gap-4 mt-4 sm:mt-0">
           <FaTwitter className="text-lg cursor-pointer hover:text-gray-400" aria-label="Twitter" />
           <FaFacebook className="text-lg cursor-pointer hover:text-gray-400" aria-label="Facebook" />
           <FaYoutube className="text-lg cursor-pointer hover:text-gray-400" aria-label="YouTube" />

@@ -18,39 +18,39 @@ const Header = () => {
   return (
     <div>
       <header>
-        <div className="bg-[#F5F5F5] flex justify-between items-center px-6 py-2 md:text-[11px] sm:text-[9px] text-[8px] font-medium text-gray-500">
+        <div className="bg-[#F5F5F5] flex justify-between items-center px-4 py-2 sm:text-xs text-[8px] font-medium text-gray-500">
           <Image
             src="/assests/logo2.svg"
-            alt={'logo'}
+            alt="logo"
             width={24}
             height={24}
             className="w-[24px] h-[24px]"
           />
 
           {/* Right side links for large screens */}
-          <div className="hidden md:flex md:gap-4 sm:gap-3 gap-2">
-            <Link href="#" className="hover:text-gray-800">Find Link Store</Link>
-            <Link href="/contact-us" className="hover:text-gray-800">Help</Link>
-            <Link href="/join-us" className="hover:text-gray-800">Join Us</Link>
-            <Link href="/login" className="hover:text-gray-800">Sign In</Link>
+          <div className="hidden sm:flex gap-2">
+            <Link href="#" className="hover:text-gray-800 text-[10px]">Find Link Store</Link>
+            <Link href="/contact-us" className="hover:text-gray-800 text-[10px]">Help</Link>
+            <Link href="/join-us" className="hover:text-gray-800 text-[10px]">Join Us</Link>
+            <Link href="/login" className="hover:text-gray-800 text-[10px]">Sign In</Link>
           </div>
         </div>
 
         {/* Main navigation */}
-        <div className="flex flex-wrap justify-between items-center px-6 py-4">
+        <div className="flex flex-wrap justify-between items-center px-4 py-4">
           {/* Left section (Logo) */}
           <div className="flex items-center">
             <Image
               src="/assests/nike.png"
               alt="Nike Logo"
-              className="md:w-[78px] sm:w-[60px] w-[30px]"
-              width={30}
-              height={30}
+              className="md:w-[78px] sm:w-[60px] w-[40px]"
+              width={40}
+              height={40}
             />
           </div>
 
           {/* Center section (Navigation Links) for large screens */}
-          <nav className="hidden md:flex gap-4 md:gap-6 text-gray-700 font-medium md:text-[16px] sm:text-[14px] text-[10px]">
+          <nav className="hidden sm:flex gap-4 text-[14px] font-medium md:text-[16px] text-gray-700">
             <Link href="/hero" className="hover:text-black whitespace-nowrap">New Featured</Link>
             <Link href="/all-products" className="hover:text-black whitespace-nowrap">Men</Link>
             <Link href="/all-products" className="hover:text-black whitespace-nowrap">Women</Link>
@@ -60,9 +60,9 @@ const Header = () => {
           </nav>
 
           {/* Right section (Search, Wishlist, Cart) */}
-          <div className="flex items-center gap-4 mt-4 md:mt-0">
+          <div className="flex items-center gap-4 mt-4 sm:mt-0">
             {/* Search Bar */}
-            <div className="relative hidden md:block">
+            <div className="relative hidden sm:block">
               <input
                 type="text"
                 placeholder="Search"
@@ -70,15 +70,15 @@ const Header = () => {
               />
               <FaSearch className="absolute right-3 top-2.5 text-gray-500" />
             </div>
-            <FaRegHeart className="text-gray-700 md:w-[24px] md:h-[24px] sm:w-[20px] sm:h-[20px] w-[16px] h-[16px] cursor-pointer hover:text-black" />
+            <FaRegHeart className="text-gray-700 sm:w-[24px] sm:h-[24px] w-[16px] h-[16px] cursor-pointer hover:text-black" />
             <Link href="/checkout" className="hover:text-gray-800">
-              <BiShoppingBag className="text-gray-700 md:w-[24px] md:h-[24px] sm:w-[20px] sm:h-[20px] w-[16px] h-[16px] cursor-pointer hover:text-black" />
+              <BiShoppingBag className="text-gray-700 sm:w-[24px] sm:h-[24px] w-[16px] h-[16px] cursor-pointer hover:text-black" />
             </Link>
           </div>
         </div>
 
         {/* Mobile Search Bar */}
-        <div className="block md:hidden px-6 mt-2">
+        <div className="block sm:hidden px-4 mt-2">
           <div className="relative">
             <input
               type="text"
@@ -92,7 +92,7 @@ const Header = () => {
 
       {/* Mobile Menu Button - Positioned at the top-right of the header */}
       <div
-        className="md:hidden block text-3xl  text-black cursor-pointer absolute right-5 top-4 z-10"
+        className="sm:hidden block text-3xl text-black cursor-pointer absolute right-4 top-4 z-10"
         onClick={toggleMenu}
       >
         <IoMenu />
