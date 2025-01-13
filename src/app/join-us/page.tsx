@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react';    
 import Image from "next/image"; // Next.js component for optimized image handling
 import Link from "next/link"; // For navigation using Next.js Link component
 
-const page = () => {
+const Page = () => {
   return (
     <div className="flex flex-col justify-start items-center h-screen px-4 md:px-8 lg:px-12">
       {/* Header */}
-      <header className="text-center mt-2">
+      <header className="text-center mt-2">  
         <h1 className="text-lg font-bold text-gray-900 my-2">
           BECOME A NIKE MEMBER
         </h1>
@@ -60,10 +60,11 @@ const page = () => {
 
         {/* Country selection dropdown */}
         <select
-          className="w-50 lg:w-96 border-[#E5E5E5] rounded-md mb-2 px-4 py-3 border-[2px] placeholder:text-text-secondary-gray"
+          className="w-50 lg:w-96 border-[#E5E5E5] rounded-md mb-2 px-4 py-3 border-[2px]"
           name="country"
           id="country"
         >
+          <option className='text-text-secondary-gray' value="">Select Country</option>
           <option className='text-text-secondary-gray' value="IN">India</option>
           <option className='text-text-secondary-gray' value="US">United States</option>
           <option className='text-text-secondary-gray' value="UK">United Kingdom</option>
@@ -84,28 +85,27 @@ const page = () => {
           </div>
         </div>
 
-          {/* Terms and Conditions */}
-          <div className="flex items-center pl-8 pr-10">
-            <input
-              type="checkbox"
-              className="w-5 h-5 mr-2"
-            />
-            <label className="text-xs text-gray-600">
-              Sign up for emails to get updates from Nike on products, offers, and your Member benefits.
-            </label>
-          </div>
+        {/* Terms and Conditions */}
+        <div className="flex items-center pl-8 pr-10">
+          <input
+            type="checkbox"
+            className="w-5 h-5 mr-2"
+          />
+          <label className="text-xs text-gray-600">
+            Sign up for emails to get updates from Nike on products, offers, and your Member benefits.
+          </label>
         </div>
 
-          <p className="text-xs text-gray-500">
-            By creating an account you agree to Nike's{" "}
-            <a href="#" className="underline">
-              Privacy Policy
-            </a>{" "}
-            and{" "}
-            <a href="#" className="underline">
-              Terms of Use
-            </a>.
-          </p>
+        <p className="text-xs text-gray-500">
+          By creating an account you agree to Nike's{" "}
+          <a href="#" className="underline">
+            Privacy Policy
+          </a>{" "}
+          and{" "}
+          <a href="#" className="underline">
+            Terms of Use
+          </a>.
+        </p>
 
         {/* Custom Button as a <button> element */}
         <button
@@ -118,11 +118,13 @@ const page = () => {
         {/* Link to existing member sign-in page */}
         <p className="text-center">
           <span className="text-text-secondary-gray">Already a Member? </span>
-          <span className="underline">Join Us.</span>
+          <Link href="/signin">
+            <span className="underline">Sign In</span>
+          </Link>
         </p>
       </form>
     </div>
   );
 };
 
-export default page;
+export default Page;
