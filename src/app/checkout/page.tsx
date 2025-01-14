@@ -139,7 +139,7 @@ const OrderPage = () => {
           {/* Product 1 */}
           <div className="flex flex-col mb-4">
             <Image
-              src="/assests/G1.png"
+              src="/images/products/product-8.png"
               alt="Product image"
               width={300}
               height={300}
@@ -153,7 +153,7 @@ const OrderPage = () => {
           {/* Product 2 */}
           <div className="flex flex-col">
             <Image
-              src="/assests/image3.png"
+              src="/images/products/product-2.png"
               alt="Product image"
               width={300}
               height={300}
