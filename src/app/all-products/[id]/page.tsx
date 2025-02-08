@@ -39,7 +39,7 @@ const ProductPage = async ({ params }: { params: Promise<{ id: string }> }) => {
           silhouette. Details like the deco stitching on the Swoosh add coveted
           appeal while the unexpected shading rich mixture of materials and
           aged midsole aesthetic give this release an artisan finish.
-        </p>
+        </p> 
 
         {/* Product Price */}
         <h3>{product.price}</h3>

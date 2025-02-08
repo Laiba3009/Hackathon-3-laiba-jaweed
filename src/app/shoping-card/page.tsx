@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const card = () => {
   return (
@@ -98,9 +99,11 @@ const card = () => {
                 <p>₹20,890.00</p>
               </div>
             </div>
-            <button className="bg-black text-white py-2 px-4 rounded-full w-full font-medium text-[15px] leading-[24px]">
+            <Link href ="/checkout">
+            <button className="bg-black text-white hover:bg-gray-700 py-2 px-4 rounded-full w-full font-medium text-[15px] leading-[24px]">
         Member Checkout
       </button>
+      </Link>
           </div>
         </div>
 

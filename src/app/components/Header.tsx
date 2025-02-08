@@ -71,7 +71,7 @@ const Header = () => {
               <FaSearch className="absolute right-3 top-2.5 text-gray-500" />
             </div>
             <FaRegHeart className="text-gray-700 sm:w-[24px] sm:h-[24px] w-[16px] h-[16px] cursor-pointer hover:text-black" />
-            <Link href="/checkout" className="hover:text-gray-800">
+            <Link href="/cart" className="hover:text-gray-800">
               <BiShoppingBag className="text-gray-700 sm:w-[24px] sm:h-[24px] w-[16px] h-[16px] cursor-pointer hover:text-black" />
             </Link>
           </div>

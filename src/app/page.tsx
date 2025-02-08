@@ -1,11 +1,14 @@
-import Hero from "./hero/page";
+// pages/index.tsx
+import React from 'react';
+import Hero from './hero/page';
 
-export default function Home() {
-  return ( 
-         <div>
-            <Hero />
-         </div>
-        
-         
+const HomePage: React.FC = () => {
+  return (
+    <div>
+   <Hero />
+    </div>
   );
-}
+};
+
+export default HomePage;
+

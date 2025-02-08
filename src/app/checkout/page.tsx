@@ -1,173 +1,304 @@
-"use client";
-import Image from 'next/image';
-import React, { useState } from 'react';
+'use client';
 
-const OrderPage = () => {
-  const [pan, setPan] = useState('');
-  const [isChecked, setIsChecked] = useState(false);
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { CgChevronRight } from "react-icons/cg";
+import { getCartItems } from "../utils/cart-action/page";
+import Swal from "sweetalert2";
+import { urlFor } from "../sanity/lib/image";
+import { toast } from 'react-toastify';
+import { client } from "../sanity/lib/client";
+import Product from "../types/page";
+
+export default function CheckoutPage() {
+  const [cartItems, setCartItems] = useState<Product[]>([]);
+  const [discount, setDiscount] = useState<number>(0);
+  const [formValues, setFormValues] = useState({
+    firstName: "",
+    lastName: "",
+    address: "",
+    city: "",
+    zipCode: "",
+    phone: "",
+    email: "",
+  });
+
+  const [formErrors, setFormErrors] = useState({
+    firstName: false,
+    lastName: false,
+    address: false,
+    city: false,
+    zipCode: false,
+    phone: false,
+    email: false,
+  });
+
+  useEffect(() => {
+    setCartItems(getCartItems());
+    const appliedDiscount = localStorage.getItem("appliedDiscount");
+    if (appliedDiscount) {
+      setDiscount(Number(appliedDiscount));
+    }
+  }, []);
+
+  const subtotal = cartItems.reduce(
+    (total, item) => total + item.price * item.inventory,
+    0
+  );
+  const total = Math.max(subtotal - discount, 0);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormValues({
+      ...formValues,
+      [e.target.id]: e.target.value,
+    });
+  };
+
+  const validateForm = () => {
+    const errors = {
+      firstName: !formValues.firstName,
+      lastName: !formValues.lastName,
+      address: !formValues.address,
+      city: !formValues.city,
+      zipCode: !formValues.zipCode,
+      phone: !formValues.phone,
+      email: !formValues.email || !/\S+@\S+\.\S+/.test(formValues.email),
+    };
+
+    // Phone validation (basic)
+    const phoneRegex = /^[0-9]{10}$/;
+    if (formValues.phone && !phoneRegex.test(formValues.phone)) {
+      errors.phone = true;
+    }
+
+    setFormErrors(errors);
+    return Object.values(errors).every((error) => !error);
+  };
+
+  const handlePlaceOrder = async () => {
+    if (validateForm()) {
+      Swal.fire({
+        title: "Processing your order...",
+        text: "Please wait a moment.",
+        icon: "info",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Proceed",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          localStorage.removeItem("appliedDiscount");
+
+          // Prepare the order data to be sent to the database
+          const orderData = {
+            _type: 'order',
+            firstName: formValues.firstName,
+            lastName: formValues.lastName,
+            address: formValues.address,
+            city: formValues.city,
+            zipCode: formValues.zipCode,
+            phone: formValues.phone,
+            email: formValues.email,
+            cartItems: cartItems.map(item => ({
+              _type: 'reference',
+              _ref: item._id
+            })),
+            total: total,
+            discount: discount,
+            orderDate: new Date().toISOString(),
+          };
+
+          try {
+            // Save the order data to the database
+            await client.create(orderData);
+            // Show success toast notification
+            toast.success("Your order has been placed successfully!");
+            Swal.fire("Success!", "Your order has been successfully processed!", "success");
+          } catch (error) {
+            console.error("Error creating order:", error);
+            // Show error toast notification in case of failure
+            toast.error("There was an issue placing your order. Please try again.");
+            Swal.fire("Error", "There was an issue processing your order.", "error");
+          }
+        }
+      });
+    } else {
+      Swal.fire("Error", "Please fill in all the fields correctly before proceeding.", "error");
+      toast.error("Please fill in all the fields correctly.");
+    }
+  };
 
   return (
-    <div className="flex flex-col lg:flex-row justify-between p-4 lg:p-8 bg-gray-100">
-      {/* Left Side (Form) */}
-      <div className="w-full lg:w-1/2 mb-8 lg:mb-0">
-        {/* Delivery Information */}
-        <div className="mb-8">
-          <h2 className="text-lg font-medium mb-4 text-gray-900">How would you like to get your order?</h2>
-          <p className="text-sm mb-4 text-gray-600">
-            Customs regulation for India require a copy of the recipients KYC. The address on the KYC needs to match the shipping address...
-            <a href="#" className="text-blue-600">Learn More</a>
-          </p>
-          <div className="bg-white p-4 rounded border border-gray-300">
-            <input type="text" placeholder="Deliver it" className="w-full text-base text-gray-900" />
-          </div>
-        </div>
-
-        {/* Name and Address Form */}
-        <div className="p-5 max-w-md mx-auto">
-          <h2 className="text-xl font-medium mb-7 text-gray-900">Enter your name and address:</h2>
-          <form className="space-y-7">
-            <div className="bg-white p-4 rounded border border-gray-300">
-              <input type="text" placeholder="First Name" className="w-full text-base text-gray-900" />
-            </div>
-            <div className="bg-white p-4 rounded border border-gray-300">
-              <input type="text" placeholder="Last Name" className="w-full text-base text-gray-900" />
-            </div>
-            <div className="bg-white p-4 rounded border border-gray-300">
-              <input type="text" placeholder="Address Line 1" className="w-full text-base text-gray-900" />
-            </div>
-            <div className="bg-white p-4 rounded border border-gray-300">
-              <input type="text" placeholder="Address Line 2" className="w-full text-base text-gray-900" />
-            </div>
-            <div className="bg-white p-4 rounded border border-gray-300">
-              <input type="text" placeholder="Address Line 3" className="w-full text-base text-gray-900" />
-            </div>
-            <div className="flex space-x-4">
-              <div className="bg-white p-4 rounded border border-gray-300 flex-1">
-                <input type="text" placeholder="Postal Code" className="w-full text-base text-gray-900" />
-              </div>
-              <div className="bg-white p-4 rounded border border-gray-300 flex-1">
-                <input type="text" placeholder="Locality" className="w-full text-base text-gray-900" />
-              </div>
-            </div>
-            <div className="flex space-x-4">
-              <div className="bg-white p-4 rounded border border-gray-300 flex-1">
-                <select className="w-full text-base text-gray-500">
-                  <option>State/Territory</option>
-                </select>
-              </div>
-              <div className="bg-white p-4 rounded border border-gray-300 flex-1 relative">
-                <select className="w-full text-base text-gray-900">
-                  <option>India</option>
-                </select>
-              </div>
-            </div>
-            <div className="flex items-center space-x-2">
-              <input type="checkbox" id="saveAddress" className="h-4 w-4" />
-              <label htmlFor="saveAddress" className="text-sm text-gray-900">Save this address to my profile</label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <input type="checkbox" id="preferredAddress" className="h-4 w-4" />
-              <label htmlFor="preferredAddress" className="text-sm text-gray-900">Make this my preferred address</label>
-            </div>
-          </form>
-        </div>
-
-        {/* Contact Information */}
-        <div className="py-5 w-full max-w-md">
-          <h2 className="text-xl font-medium mb-7 text-gray-900">What's your contact information?</h2>
-          <div className="mb-8">
-            <div className="bg-white p-4 rounded border border-gray-300 mb-2">
-              <input type="text" placeholder="Email" className="w-full text-base text-gray-900" />
-            </div>
-            <p className="text-xs text-gray-600 pl-4">A confirmation email will be sent after checkout.</p>
-          </div>
-          <div>
-            <div className="bg-white p-4 rounded border border-gray-300 mb-2">
-              <input type="text" placeholder="Phone Number" className="w-full text-base text-gray-900" />
-            </div>
-            <p className="text-xs text-gray-600 pl-4">A carrier might contact you to confirm delivery.</p>
-          </div>
-        </div>
-
-        {/* PAN Details */}
-        <div className="p-5">
-          <h2 className="text-xl font-medium text-black mb-7">What's your PAN?</h2>
-          <div className="bg-white rounded-md p-4 mb-2">
-            <input
-              type="text"
-              placeholder="PAN"
-              value={pan}
-              onChange={(e) => setPan(e.target.value)}
-              className="text-base text-black w-full"
-            />
-          </div>
-          <p className="text-xs text-gray-600 mb-4">Enter your PAN to enable payment with UPI, Net Banking or local card methods</p>
-          <div className="flex items-center">
-            <input
-              type="checkbox"
-              checked={isChecked}
-              onChange={() => setIsChecked(!isChecked)}
-              className="mr-2"
-            />
-            <label className="text-xs text-gray-600">Save PAN details to Nike Profile</label>
-          </div>
+    <div className={`min-h-screen bg-gray-50`}>
+      <div className="mt-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav className="flex items-center gap-2 py-4">
+            <Link
+              href="/cart"
+              className="text-[#666666] hover:text-black transition text-sm"
+            >
+              Cart
+            </Link>
+            <CgChevronRight className="w-4 h-4 text-[#666666]" />
+            <span className="text-sm">Checkout</span>
+          </nav>
         </div>
       </div>
 
-      {/* Right Side (Order Summary) */}
-      <div className="w-full lg:w-1/3">
-        <div className="p-4 bg-white max-w-md mx-auto">
-          <h1 className="text-xl font-medium mb-4 text-gray-900">Order Summary</h1>
-          <div className="border-b border-gray-300 mb-4">
-            <div className="flex justify-between mb-2">
-              <span className="text-gray-600">Subtotal</span>
-              <span className="text-gray-600">₹ 20,890.00</span>
-            </div>
-            <div className="flex justify-between mb-2">
-              <span className="text-gray-600">Delivery/Shipping</span>
-              <span className="text-gray-600">Free</span>
-            </div>
-            <div className="flex justify-between font-medium mb-4">
-              <span className="text-gray-900">Total</span>
-              <span className="text-gray-900">₹ 20,890.00</span>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="bg-white border rounded-lg p-6 space-y-4">
+            <h2 className="text-lg font-semibold mb-4">Order Summary</h2>
+            {cartItems.length > 0 ? (
+              cartItems.map((item) => (
+                <div
+                  key={item._id}
+                  className="flex items-center gap-4 py-3 border-b"
+                >
+                  <div className="w-16 h-16 rounded overflow-hidden">
+                    {item.image && (
+                      <Image
+                        src={urlFor(item.image).url()}
+                        alt={item.productName}
+                        width={64}
+                        height={64}
+                        className="object-cover w-full h-full"
+                      />
+                    )}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-sm font-medium">{item.productName}</h3>
+                    <p className="text-xs text-gray-500">
+                      Quantity: {item.inventory}
+                    </p>
+                  </div>
+                  <p className="text-sm font-medium">
+                    ${item.price * item.inventory}
+                  </p>
+                </div>
+              ))
+            ) : (
+              <p className="text-sm text-gray-500">Your cart is empty.</p>
+            )}
+            <div className="text-right pt-4">
+              <p className="text-sm">
+                Subtotal: <span className="font-medium">${subtotal}</span>
+              </p>
+              <p className="text-sm">
+                Discount: <span className="font-medium">-${discount}</span>
+              </p>
+              <p className="text-lg font-semibold">
+                Total: ${total.toFixed(2)}
+              </p>
             </div>
           </div>
-          <p className="text-sm text-gray-500 mb-4">(The total reflects the price of your order including all duties and taxes)</p>
-          <div className="mb-4">
-            <span className="font-bold text-gray-900">Arrives Mon 27 Mar - Wed 12 Apr</span>
-          </div>
-          {/* Product 1 */}
-          <div className="flex flex-col mb-4">
-            <Image
-              src="/images/products/product-8.png"
-              alt="Product image"
-              width={300}
-              height={300}
-              className="mx-auto w-full"
-            />
-            <p className="text-gray-900">Nike Dri-FIT ADV TechKnit Ultra Mens Short-Sleeve Running Top</p>
-            <p className="text-gray-600">Qty 1</p>
-            <p className="text-gray-600">Size L</p>
-            <p className="text-gray-600">₹ 3,895.00</p>
-          </div>
-          {/* Product 2 */}
-          <div className="flex flex-col">
-            <Image
-              src="/images/products/product-2.png"
-              alt="Product image"
-              width={300}
-              height={300}
-              className="mx-auto w-full"
-            />
-            <p className="text-gray-900">Nike Air Max 97 SE Mens Shoes</p>
-            <p className="text-gray-600">Qty 1</p>
-            <p className="text-gray-600">Size UK 8</p>
-            <p className="text-gray-600">₹ 16,995.00</p>
+
+          {/* Billing Form */}
+          <div className="bg-white border rounded-lg p-6 space-y-6">
+            <h2 className="text-xl font-semibold">Billing Information</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="firstName">First Name</label>
+                <input
+                  id="firstName"
+                  placeholder="Enter your first name"
+                  value={formValues.firstName}
+                  onChange={handleInputChange}
+                  className={`border border-gray-300 focus:outline-none focus:border-blue-500 hover:border-blue-500 ${formErrors.firstName ? 'border-red-500' : ''}`}
+                />
+                {formErrors.firstName && (
+                  <p className="text-sm text-red-500">First name is required.</p>
+                )}
+              </div>
+              <div>
+                <label htmlFor="lastName">Last Name</label>
+                <input
+                  id="lastName"
+                  placeholder="Enter your last name"
+                  value={formValues.lastName}
+                  onChange={handleInputChange}
+                  className={`border border-gray-300 focus:outline-none focus:border-blue-500 hover:border-blue-500 ${formErrors.lastName ? 'border-red-500' : ''}`}
+                />
+                {formErrors.lastName && (
+                  <p className="text-sm text-red-500">Last name is required.</p>
+                )}
+              </div>
+            </div>
+            <div>
+              <label htmlFor="address">Address</label>
+              <input
+                id="address"
+                placeholder="Enter your address"
+                value={formValues.address}
+                onChange={handleInputChange}
+                className={`border border-gray-300 focus:outline-none focus:border-blue-500 hover:border-blue-500 ${formErrors.address ? 'border-red-500' : ''}`}
+              />
+              {formErrors.address && (
+                <p className="text-sm text-red-500">Address is required.</p>
+              )}
+            </div>
+            <div>
+              <label htmlFor="city">City</label>
+              <input
+                id="city"
+                placeholder="Enter your city"
+                value={formValues.city}
+                onChange={handleInputChange}
+                className={`border border-gray-300 focus:outline-none focus:border-blue-500 hover:border-blue-500 ${formErrors.city ? 'border-red-500' : ''}`}
+              />
+              {formErrors.city && (
+                <p className="text-sm text-red-500">City is required.</p>
+              )}
+            </div>
+            <div>
+              <label htmlFor="zipCode">Zip Code</label>
+              <input
+                id="zipCode"
+                placeholder="Enter your zip code"
+                value={formValues.zipCode}
+                onChange={handleInputChange}
+                className={`border border-gray-300 focus:outline-none focus:border-blue-500 hover:border-blue-500 ${formErrors.zipCode ? 'border-red-500' : ''}`}
+              />
+              {formErrors.zipCode && (
+                <p className="text-sm text-red-500">Zip Code is required.</p>
+              )}
+            </div>
+            <div>
+              <label htmlFor="phone">Phone</label>
+              <input
+                id="phone"
+                placeholder="Enter your phone number"
+                value={formValues.phone}
+                onChange={handleInputChange}
+                className={`border border-gray-300 focus:outline-none focus:border-blue-500 hover:border-blue-500 ${formErrors.phone ? 'border-red-500' : ''}`}
+              />
+              {formErrors.phone && (
+                <p className="text-sm text-red-500">Phone is invalid.</p>
+              )}
+            </div>
+            <div>
+              <label htmlFor="email">Email</label>
+              <input
+                id="email"
+                placeholder="Enter your email address"
+                value={formValues.email}
+                onChange={handleInputChange}
+                className={`border border-gray-300 focus:outline-none focus:border-blue-500 hover:border-blue-500 ${formErrors.email ? 'border-red-500' : ''}`}
+              />
+              {formErrors.email && (
+                <p className="text-sm text-red-500">Please enter a valid email.</p>
+              )}
+            </div>
+            <button
+              className="w-full h-12 bg-blue-500 hover:bg-blue-700 text-white"
+              onClick={handlePlaceOrder}
+            >
+              Place Order
+            </button>
           </div>
         </div>
       </div>
     </div>
   );
-};
-
-export default OrderPage;
+}
