@@ -1,4 +1,7 @@
 // src/app/types/page.t
+
+import { Image } from "sanity";
+
 // 
  interface Product {
   _id: string;
@@ -16,7 +19,7 @@
   image: {
     asset: {
       url: string;
-      type: string;
+      type: Image;
     };
   };
 }

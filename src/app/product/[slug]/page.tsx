@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Product } from "../../types/page";
 import { client } from "@/app/sanity/lib/client";
 import { groq } from "next-sanity";
 import Link from "next/link";
+import Product from "@/app/types/page";
 
 // Fetch function to get product details by slug
 async function fetchProduct(slug: string): Promise<Product> {
@@ -25,14 +25,12 @@ async function fetchProduct(slug: string): Promise<Product> {
   );
 }
 
-// This is your default export as a React component
 const ProductPage = ({ params }: { params: Promise<{ slug: string }> }) => {
   const [product, setProduct] = useState<Product | null>(null); // Product data
   const [loading, setLoading] = useState(true); // Loading state
   const [error, setError] = useState<string | null>(null); // Error state
   const [slug, setSlug] = useState<string | null>(null); // Product slug
   const [selectedColor, setSelectedColor] = useState<string>(''); // Color selection state
-  const [selectedCategory, setSelectedCategory] = useState<string>(''); // Category selection state
 
   // Extract the slug from params asynchronously
   useEffect(() => {
@@ -65,7 +63,7 @@ const ProductPage = ({ params }: { params: Promise<{ slug: string }> }) => {
   if (error) return <div>{error}</div>;
   if (!product) return <div>Product not found</div>;
 
-  const imageUrl = product?.image || ""; // Fallback for image URL
+  const imageUrl = product?.image?.asset?.url || ""; // Ensure this is the string URL
 
   const handleAddToCart = () => {
     console.log("Added to Cart: ", product);
@@ -80,7 +78,7 @@ const ProductPage = ({ params }: { params: Promise<{ slug: string }> }) => {
         <div className="sm:w-1/2">
           {imageUrl ? (
             <Image
-              src={imageUrl}
+              src={imageUrl}  // Now this should be the string URL
               alt={product.productName}
               width={400}
               height={400}
@@ -117,18 +115,24 @@ const ProductPage = ({ params }: { params: Promise<{ slug: string }> }) => {
             </div>
           </div>
 
-        
+          {/* Add to Cart Button */}
+          <button 
+            onClick={handleAddToCart} 
+            className="mt-6 bg-black text-white px-6 py-3 rounded hover:bg-gray-700 transition"
+          >
+            Add to Cart
+          </button>
+          
+          {/* Link to Cart page */}
           <Link href="/cart">
-  <button className="mt-6 bg-black text-white px-6 py-3 rounded hover:bg-gray-700 transition">
-    Add to Cart
-  </button>
-  </Link>
-
+            <button className="mt-4 bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-700 transition">
+              Go to Cart
+            </button>
+          </Link>
         </div>
       </div>
     </div>
   );
 };
 
-// Export the component as default
 export default ProductPage;
