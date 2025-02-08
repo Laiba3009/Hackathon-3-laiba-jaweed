@@ -4,8 +4,6 @@ const moduleExports = {
   // your config options here (if any)
 };
 
-const sentryConfig = {
-  silent: true,
-};
-
-export default withSentryConfig(moduleExports, sentryConfig);  // Using ES Module export
+export default withSentryConfig(moduleExports, {
+  silent: true,  // directly inlined
+});  // Using ES Module export

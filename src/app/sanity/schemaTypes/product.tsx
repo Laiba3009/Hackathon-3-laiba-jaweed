@@ -1,7 +1,5 @@
-
-
 // Import Sanity client (if not already imported)
-import { Product } from '@/app/types/page';
+import Product from '@/app/types/page';
 import { client } from '../lib/client';
 
 // Define the product schema
@@ -20,7 +18,7 @@ export const productSchema = {
       type: 'slug',
       title: 'Slug',
       options: {
-        source: (doc: Product ) => `${doc.category ? doc.category.toLowerCase() + '-' : ''}${doc.productName.toLowerCase().replace(/\s+/g, '-')}`, // Combining category and product name
+        source: (doc: Product) => `${doc.category ? doc.category.toLowerCase() + '-' : ''}${doc.productName.toLowerCase().replace(/\s+/g, '-')}`, // Combining category and product name
         maxLength: 96,
       },
       validation: (Rule: any) =>

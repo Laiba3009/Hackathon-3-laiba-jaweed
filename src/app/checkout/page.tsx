@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 import { urlFor } from "../sanity/lib/image";
 import { toast } from 'react-toastify';
 import { client } from "../sanity/lib/client";
-import Product from "../types/page";
+import { Product } from "../types/page";
 
 export default function CheckoutPage() {
   const [cartItems, setCartItems] = useState<Product[]>([]);

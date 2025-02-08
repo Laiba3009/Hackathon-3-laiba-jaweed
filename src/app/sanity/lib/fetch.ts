@@ -8,8 +8,13 @@ const client = createClient({
   apiVersion: "2023-10-10", // Make sure to use the correct API version
 });
 
+// Define the expected type for params
+interface SanityFetchParams {
+  [key: string]: string | number | boolean; // Adjust based on the types of parameters you expect
+}
+
 // Fetch function definition
-export async function sanityFetch({ query, params = {} }: { query: string, params?: any }) {
+export async function sanityFetch({ query, params = {} }: { query: string, params?: SanityFetchParams }) {
   try {
     const data = await client.fetch(query, params);
     return data;

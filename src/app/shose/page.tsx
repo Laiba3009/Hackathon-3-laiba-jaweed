@@ -1,22 +1,19 @@
-"use client";
-
+"use client"
 import React, { useEffect, useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { client } from "../sanity/lib/client";
 import { addToCart } from "../utils/cart-action/page";
 import Swal from "sweetalert2";
-import Product from "../types/page";
+import { Product } from "../types/page";
 
 const ProductList: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [cart, setCart] = useState<Product[]>([]); // Cart state
 
   // Filters and Pagination State
   const [selectedCategory, setSelectedCategory] = useState<string>('');
-  const [selectedColor, setSelectedColor] = useState<string>('');
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 6; // Adjusted to show 6 products per page
 
@@ -59,10 +56,9 @@ const ProductList: React.FC = () => {
   const filteredData = useMemo(() => {
     return products.filter(product => {
       const matchesCategory = selectedCategory ? product.category === selectedCategory : true;
-      const matchesColor = selectedColor ? product.colors.includes(selectedColor) : true;
-      return matchesCategory && matchesColor;
+      return matchesCategory;
     });
-  }, [products, selectedCategory, selectedColor]);
+  }, [products, selectedCategory]);
 
   // Pagination Logic
   const paginatedData = useMemo(() => {

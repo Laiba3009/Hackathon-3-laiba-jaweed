@@ -5,7 +5,7 @@ import Image from "next/image";
 import { client } from "@/app/sanity/lib/client";
 import { groq } from "next-sanity";
 import Link from "next/link";
-import Product from "@/app/types/page";
+import { Product } from "../../types/page";
 
 // Fetch function to get product details by slug
 async function fetchProduct(slug: string): Promise<Product> {

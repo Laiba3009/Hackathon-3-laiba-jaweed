@@ -1,6 +1,7 @@
 // Wherever you're importing Product, you will now import it as follows:
 
-import Product from "../../types/page";
+import { Product } from "@/app/types/page";
+
 
 
 
