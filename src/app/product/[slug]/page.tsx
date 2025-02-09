@@ -58,7 +58,7 @@ const ProductPage = ({ params }: { params: Promise<{ slug: string }> }) => {
   if (loading) return <div>Loading...</div>;
   if (!product) return <div>Product not found</div>;
 
-  const imageUrl = product?.image?.asset?.url || ''; // Fallback if imageUrl is empty
+  const imageUrl = product?.image || ''; // Fallback if imageUrl is empty
 
   // Log the image URL for debugging
   console.log("Image URL: ", imageUrl);
@@ -87,7 +87,7 @@ const ProductPage = ({ params }: { params: Promise<{ slug: string }> }) => {
               alt={product.productName}
               width={400}
               height={400}
-              className="w-[600px] h-[500px] sm:h-[350px] object-cover rounded-lg shadow-lg"
+              className="w-[600px] h-[450px] sm:h-[350px] object-cover rounded-lg shadow-lg"
             />
           ) : (
             <div className="w-full h-[300px] sm:h-[350px] bg-gray-300 rounded-lg shadow-md flex items-center justify-center">
