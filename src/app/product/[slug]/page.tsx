@@ -97,7 +97,7 @@ const ProductPage = ({ params }: { params: Promise<{ slug: string }> }) => {
             alt={product.productName}
             width={600}
             height={450}
-            className="w-[600px] h-[450px] object-cover rounded-lg shadow-lg"
+            className="w-[500px] h-[400px] object-cover rounded-lg shadow-lg"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.src = '/fallback-image.jpg'; // Fallback logic if the image fails to load
