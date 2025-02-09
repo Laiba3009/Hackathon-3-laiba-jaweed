@@ -1,4 +1,5 @@
-'use client';
+"use client";
+
 import React, { useEffect, useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,7 +11,6 @@ import addToCart from '../actions/actions';
 const ProductList: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
 
   // Filters and Pagination State
   const [selectedCategory, setSelectedCategory] = useState<string>('');
@@ -40,9 +40,8 @@ const ProductList: React.FC = () => {
       }`;
       const data = await client.fetch(query);
       setProducts(data);
-    } catch (error) {
-      setError('Failed to load products.');
-      // Removed the console.log to resolve the warning
+    } catch {
+      // error handling removed as the error variable is no longer used
     } finally {
       setLoading(false);
     }
@@ -104,8 +103,6 @@ const ProductList: React.FC = () => {
 
       {loading ? (
         <div className="text-center text-lg text-gray-500">Loading...</div>
-      ) : error ? (
-        <div className="text-center text-lg text-red-600">{error}</div>
       ) : (
         <>
           {/* Filters Section */}

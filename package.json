@@ -39,7 +39,7 @@
     "@types/react-dom": "^19",
     "@types/react-slick": "^0.23.13",
     "create-sanity": "^3.70.0",
-    "eslint": "^8",
+    "eslint": "^8.57.1",
     "eslint-config-next": "15.0.4",
     "lighthouse": "^12.3.0",
     "postcss": "^8",

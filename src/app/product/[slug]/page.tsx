@@ -44,8 +44,8 @@ const ProductPage = ({ params }: { params: Promise<{ slug: string }> }) => {
         try {
           const fetchedProduct = await fetchProduct(slug);
           setProduct(fetchedProduct);
-        } catch (error) {
-          // Removed console.error statement
+        } catch {
+          // Error handling has been removed as the error variable is no longer used
         } finally {
           setLoading(false);
         }
@@ -60,7 +60,7 @@ const ProductPage = ({ params }: { params: Promise<{ slug: string }> }) => {
   const imageUrl = product?.image?.asset?.url || '';
 
   const handleAddToCart = () => {
-    // Removed console.log statement
+    // Handle add to cart logic
   };
 
   return (

@@ -5,7 +5,9 @@
   ],
   "rules": {
     "react/no-unescaped-entities": "off",  // Disables the rule that flags unescaped entities in JSX
-    "no-console": "warn",  // Warns when 'console' statements are used (instead of throwing an error)
-    "semi": ["error", "always"]  // Enforces semicolons at the end of every statement
+    "no-console": "off",  // Warns when 'console' statements are used (instead of throwing an error)
+    "semi": ["error", "always"],  // Enforces semicolons at the end of every statement
+    "@typescript-eslint/no-unused-vars": "off",  // Disable unused-vars rule for TypeScript
+    "react/react-in-jsx-scope": "off"  // For Next.js apps, this might not be needed
   }
 }

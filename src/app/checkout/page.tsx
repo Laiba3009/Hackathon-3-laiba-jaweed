@@ -303,13 +303,13 @@ export default function CheckoutPage() {
               />
               {formErrors.email && (
                 <p className="text-sm text-red-500">
-                  Please enter a valid email.
+                  Please enter a valid email address.
                 </p>
               )}
             </div>
             <button
-              className="w-full h-12 bg-blue-500 hover:bg-blue-700 text-white"
               onClick={handlePlaceOrder}
+              className="w-full bg-blue-600 text-white py-2 rounded-md mt-6"
             >
               Place Order
             </button>
