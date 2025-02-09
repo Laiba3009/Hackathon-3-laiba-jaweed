@@ -8,7 +8,8 @@ export interface Product {
       _type: 'reference';
       url: string;
       _ref: string;
-    };
+       src:  string;  
+      };
   };
   price: number;
   originalPrice: number;
@@ -22,6 +23,7 @@ export interface Product {
   slug: {
     _type: 'slug';
     current: string;
+  
   };
   quantity: number; // Assuming this is used for tracking quantity in the cart
 }

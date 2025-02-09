@@ -6,6 +6,8 @@ import { client } from '@/app/sanity/lib/client';
 import { groq } from 'next-sanity';
 import Link from 'next/link';
 import { Product } from '../../types/product';
+import addToCart from '@/app/actions/actions';
+import Swal from 'sweetalert2';
 
 async function fetchProduct(slug: string): Promise<Product> {
   return client.fetch(
@@ -45,7 +47,6 @@ const ProductPage = ({ params }: { params: Promise<{ slug: string }> }) => {
           const fetchedProduct = await fetchProduct(slug);
           setProduct(fetchedProduct);
         } catch {
-          // Error handling has been removed as the error variable is no longer used
         } finally {
           setLoading(false);
         }
@@ -57,38 +58,50 @@ const ProductPage = ({ params }: { params: Promise<{ slug: string }> }) => {
   if (loading) return <div>Loading...</div>;
   if (!product) return <div>Product not found</div>;
 
-  const imageUrl = product?.image?.asset?.url || '';
+  const imageUrl = product?.image?.asset?.url || ''; // Fallback if imageUrl is empty
 
-  const handleAddToCart = () => {
-    // Handle add to cart logic
+  // Log the image URL for debugging
+  console.log("Image URL: ", imageUrl);
+
+  // Handle Add to Cart
+  const handleAddToCart = (e: React.MouseEvent, product: Product) => {
+    e.preventDefault();
+    Swal.fire({
+      position: 'top-right',
+      icon: 'success',
+      title: `${product.productName} added to cart`,
+      showConfirmButton: false,
+      timer: 1000,
+    });
+    addToCart(product); // Correctly using addToCart function
   };
 
   return (
     <div className="container mx-auto p-6">
-      <div className="flex flex-col sm:flex-row">
-        <div className="sm:w-1/2">
+      <div className="flex flex-col sm:flex-row gap-8">
+        {/* Product Image Section */}
+        <div className="sm:w-1/2 w-full">
           {imageUrl ? (
             <Image
               src={imageUrl}
               alt={product.productName}
               width={400}
               height={400}
-              className="w-full h-[400] object-cover rounded-lg shadow-lg"
+              className="w-[600px] h-[500px] sm:h-[350px] object-cover rounded-lg shadow-lg"
             />
           ) : (
-            <div className="w-full h-96 bg-gray-300 rounded-lg shadow-md flex items-center justify-center">
-              No Image Available
+            <div className="w-full h-[300px] sm:h-[350px] bg-gray-300 rounded-lg shadow-md flex items-center justify-center">
+              <p>No Image Available</p>
             </div>
           )}
         </div>
 
-        <div className="sm:w-1/2 sm:pl-6">
-          <h1 className="text-3xl font-bold mb-4">{product.productName}</h1>
+        {/* Product Info Section */}
+        <div className="sm:w-1/2 w-full sm:pl-6">
+          <h1 className="text-3xl font-semibold mb-4">{product.productName}</h1>
           <p className="text-lg mb-4">{product.description}</p>
-          <p className="text-xl text-black font-bold mb-4"> PKR</p>
-          <p className="text-xl text-red-600 font-bold mb-4">
-            ${product.price}{' '}
-          </p>
+          <p className="text-xl text-black font-bold mb-4">PKR</p>
+          <p className="text-xl text-red-600 font-bold mb-4">${product.price}</p>
           <p className="mt-2 text-sm text-gray-500">
             Category: {product.category}
           </p>
@@ -96,6 +109,7 @@ const ProductPage = ({ params }: { params: Promise<{ slug: string }> }) => {
             Inventory: {product.inventory}
           </p>
 
+          {/* Color Selection Section */}
           <div className="mt-4">
             <p className="font-semibold">Choose Color</p>
             <div className="flex gap-2 mt-2">
@@ -110,16 +124,13 @@ const ProductPage = ({ params }: { params: Promise<{ slug: string }> }) => {
             </div>
           </div>
 
-          <button
-            onClick={handleAddToCart}
-            className="mt-6 bg-black text-white px-6 py-3 rounded hover:bg-gray-700 transition"
-          >
-            Add to Cart
-          </button>
-
+          {/* Add to Cart Button */}
           <Link href="/cart">
-            <button className="mt-4 bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-700 transition">
-              Go to Cart
+            <button
+              onClick={(e) => handleAddToCart(e, product)}
+              className="mt-6 w-full sm:w-auto text-white bg-black px-6 py-3 rounded-md hover:bg-gray-800 transition-colors"
+            >
+              Add to Cart
             </button>
           </Link>
         </div>
