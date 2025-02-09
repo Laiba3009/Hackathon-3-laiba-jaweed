@@ -170,6 +170,16 @@ const Header = () => {
                 New & Featured
               </Link>
             </li>
+            <li className="border-t-2 pt-6">
+              <Link href="/cart" onClick={toggleMenu}>
+                Shopping Cart
+              </Link>
+              </li>
+              <li className="border-t-2 pt-6">
+              <Link href="/checkout" onClick={toggleMenu}>
+                Checkout
+              </Link>
+              </li>
             <li>
               <Link href="/all-products" onClick={toggleMenu}>
                 Men
@@ -193,11 +203,6 @@ const Header = () => {
             <li>
               <Link href="/all-products" onClick={toggleMenu}>
                 SNKRS
-              </Link>
-            </li>
-            <li className="border-t-2 pt-6">
-              <Link href="#" onClick={toggleMenu}>
-                Find a Store
               </Link>
             </li>
             <li>
