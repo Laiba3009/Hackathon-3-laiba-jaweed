@@ -4,11 +4,14 @@ export interface Product {
   productName: string;
   image?: {
     _type: 'image';
+    src: string;
+    alt: string;
     asset: {
       _type: 'reference';
       url: string;
+      src: string;
+      alt: string;
       _ref: string;
-       src:  string;  
       };
   };
   price: number;
