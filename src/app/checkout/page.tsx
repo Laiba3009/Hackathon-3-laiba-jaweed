@@ -120,7 +120,6 @@ export default function CheckoutPage() {
               'success'
             );
           } catch (error) {
-            console.error('Error creating order:', error);
             // Show error toast notification in case of failure
             toast.error(
               'There was an issue placing your order. Please try again.'

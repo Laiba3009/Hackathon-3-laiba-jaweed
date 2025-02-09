@@ -1,5 +1,6 @@
-"use client"
-import React, {useRef} from 'react';
+'use client';
+
+import React, { useRef } from 'react';
 import Slider from "react-slick";
 import { nikeProducts } from './Cards/data'; 
 import Card from './Cards/Cards';
@@ -46,34 +47,34 @@ const ProductSlider = () => {
 
   return (
     <>
-    <div className="flex justify-between mb-4 items-center">
-          <h2 className="font-bold">Best of Air Max</h2>
-          <div className="flex items-center gap-4">
-            <p>Shop</p>
-            <div className="bg-[#F5F5F5] px-5 py-4 rounded-full cursor-pointer" onClick={() => sliderRef.current?.slickPrev()}>
+      <div className="flex justify-between mb-4 items-center">
+        <h2 className="font-bold">Best of Air Max</h2>
+        <div className="flex items-center gap-4">
+          <p>Shop</p>
+          <div className="bg-[#F5F5F5] px-5 py-4 rounded-full cursor-pointer" onClick={() => sliderRef.current?.slickPrev()}>
             <FaChevronLeft />
-            </div>
-            <div className="bg-[#E5E5E5] px-5 py-4 rounded-full cursor-pointer" onClick={() => sliderRef.current?.slickNext()}>
-             <FaChevronRight />
-            </div>
+          </div>
+          <div className="bg-[#E5E5E5] px-5 py-4 rounded-full cursor-pointer" onClick={() => sliderRef.current?.slickNext()}>
+            <FaChevronRight />
           </div>
         </div>
-    <div className="pb-10">
-      <Slider {...settings} ref={sliderRef}>
-        {airMaxProducts.map((product) => (
-          <Card
-            id={product.id}
-            key={product.id}
-            tags={product.tags}
-            title={product.title}
-            description={product.description}
-            color={product.color}
-            price={product.price}
-            imagesUrls={product.imagesUrls}
-          />
-        ))}
-      </Slider>
-    </div>
+      </div>
+      <div className="pb-10">
+        <Slider {...settings} ref={sliderRef}>
+          {airMaxProducts.map((product) => (
+            <Card
+              id={product.id}
+              key={product.id}
+              tags={product.tags}
+              title={product.title}
+              description={product.description}
+              color={product.color}
+              price={product.price}
+              imagesUrls={product.imagesUrls}
+            />
+          ))}
+        </Slider>
+      </div>
     </>
   );
 };

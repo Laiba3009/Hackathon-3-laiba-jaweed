@@ -1,10 +1,11 @@
 'use client';
+
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { client } from '@/app/sanity/lib/client';
 import { groq } from 'next-sanity';
 import Link from 'next/link';
-import {Product} from '../../types/product';
+import { Product } from '../../types/product';
 
 async function fetchProduct(slug: string): Promise<Product> {
   return client.fetch(
@@ -44,7 +45,7 @@ const ProductPage = ({ params }: { params: Promise<{ slug: string }> }) => {
           const fetchedProduct = await fetchProduct(slug);
           setProduct(fetchedProduct);
         } catch (error) {
-          console.error('Failed to fetch product', error);
+          // Removed console.error statement
         } finally {
           setLoading(false);
         }
@@ -59,7 +60,7 @@ const ProductPage = ({ params }: { params: Promise<{ slug: string }> }) => {
   const imageUrl = product?.image?.asset?.url || '';
 
   const handleAddToCart = () => {
-    console.log('Added to Cart: ', product);
+    // Removed console.log statement
   };
 
   return (

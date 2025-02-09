@@ -1,8 +1,11 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"],
+  "extends": [
+    "next/core-web-vitals",  // Ensures you follow the core web vitals best practices for Next.js
+    "next/typescript"        // Includes TypeScript specific linting rules
+  ],
   "rules": {
-    "react/no-unescaped-entities": "off",
-    "no-console": "warn", // Example: Warning for console logs
-    "semi": ["error", "always"] // Example: Enforce semicolons at the end of statements
+    "react/no-unescaped-entities": "off",  // Disables the rule that flags unescaped entities in JSX
+    "no-console": "warn",  // Warns when 'console' statements are used (instead of throwing an error)
+    "semi": ["error", "always"]  // Enforces semicolons at the end of every statement
   }
 }

@@ -1,5 +1,6 @@
 import { Product } from '@/app/types/product';
 import { client } from '../lib/client';
+import { Rule } from '@sanity/types'; // Import the correct type for Rule
 
 export const productSchema = {
   name: 'product',
@@ -11,7 +12,7 @@ export const productSchema = {
       title: 'Product Name',
       type: 'string',
       description: 'The name of the product.',
-      validation: (Rule: any) => Rule.required().min(3).max(100),
+      validation: (Rule: Rule) => Rule.required().min(3).max(100),
     },
     {
       name: 'slug',
@@ -25,7 +26,7 @@ export const productSchema = {
             .replace(/\s+/g, '-')}`,
         maxLength: 96,
       },
-      validation: (Rule: any) =>
+      validation: (Rule: Rule) =>
         Rule.required().custom(async (slug: { current: string }) => {
           const existing = await client.fetch(
             `*[_type == "product" && slug.current == $slug][0]`,
@@ -42,21 +43,21 @@ export const productSchema = {
       title: 'Category',
       type: 'string',
       description: 'The category of the product (e.g., electronics, clothing).',
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'price',
       title: 'Price',
       type: 'number',
       description: 'The price of the product in USD.',
-      validation: (Rule: any) => Rule.required().min(0),
+      validation: (Rule: Rule) => Rule.required().min(0),
     },
     {
       name: 'inventory',
       title: 'Inventory',
       type: 'number',
       description: 'The number of items available in stock.',
-      validation: (Rule: any) => Rule.required().min(0),
+      validation: (Rule: Rule) => Rule.required().min(0),
     },
     {
       name: 'colors',
@@ -64,7 +65,7 @@ export const productSchema = {
       type: 'array',
       description: 'Available colors for the product.',
       of: [{ type: 'string' }],
-      validation: (Rule: any) => Rule.required().min(1),
+      validation: (Rule: Rule) => Rule.required().min(1),
     },
     {
       name: 'status',
@@ -78,7 +79,7 @@ export const productSchema = {
           { title: 'Discontinued', value: 'discontinued' },
         ],
       },
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'image',
@@ -88,14 +89,14 @@ export const productSchema = {
       options: {
         hotspot: true,
       },
-      validation: (Rule: any) => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'description',
       title: 'Description',
       type: 'text',
       description: 'A detailed description of the product.',
-      validation: (Rule: any) => Rule.required().min(10).max(500),
+      validation: (Rule: Rule) => Rule.required().min(10).max(500),
     },
   ],
 };

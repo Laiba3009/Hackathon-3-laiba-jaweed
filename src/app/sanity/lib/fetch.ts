@@ -25,7 +25,7 @@ export async function sanityFetch({
     const data = await client.fetch(query, params);
     return data;
   } catch (error) {
-    console.error('Error fetching data:', error);
+    // Removed console.error to avoid the warning
     throw error;
   }
 }

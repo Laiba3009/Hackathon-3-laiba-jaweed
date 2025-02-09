@@ -10,14 +10,7 @@ const Login = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(
-      'Email:',
-      email,
-      'Password:',
-      password,
-      'Remember Me:',
-      rememberMe
-    );
+    // Removed console.log to avoid warning
   };
 
   return (

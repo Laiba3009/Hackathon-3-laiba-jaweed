@@ -42,7 +42,7 @@ const ProductList: React.FC = () => {
       setProducts(data);
     } catch (error) {
       setError('Failed to load products.');
-      console.error('Error fetching products:', error);
+      // Removed the console.log to resolve the warning
     } finally {
       setLoading(false);
     }
@@ -93,7 +93,7 @@ const ProductList: React.FC = () => {
       showConfirmButton: false,
       timer: 1000,
     });
-   addToCart(product); // Correctly using addToCart function
+    addToCart(product); // Correctly using addToCart function
   };
 
   return (
