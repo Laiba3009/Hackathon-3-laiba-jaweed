@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
 import React, { useState } from 'react';
@@ -10,7 +10,14 @@ const Login = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Email:', email, 'Password:', password, 'Remember Me:', rememberMe);
+    console.log(
+      'Email:',
+      email,
+      'Password:',
+      password,
+      'Remember Me:',
+      rememberMe
+    );
   };
 
   return (

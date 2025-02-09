@@ -1,6 +1,6 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const card = () => {
   return (
@@ -8,8 +8,8 @@ const card = () => {
       <div className="container mx-auto px-4 md:px-20 py-10">
         <div className="bg-gray-100 p-4 rounded-md text-sm text-gray-700 mb-6">
           <p>
-            <strong>Free Delivery</strong> <br /> Applies to orders of ₹14,000.00 or
-            more.
+            <strong>Free Delivery</strong> <br /> Applies to orders of
+            ₹14,000.00 or more.
             <a href="#" className="text-black underline">
               View details
             </a>
@@ -22,8 +22,13 @@ const card = () => {
 
             <div className="flex flex-col md:flex-row items-start justify-between border-b border-gray-300 pb-6 mb-6">
               <div className="flex gap-6">
-                <Image src= "/images/products/product-38.png" width={300} height={300} alt="Nike Dri-FIT ADV TechKnit Ultra"
-                  className="w-24 h-24 md:w-32 md:h-32 object-cover rounded-md"/>
+                <Image
+                  src="/images/products/product-38.png"
+                  width={300}
+                  height={300}
+                  alt="Nike Dri-FIT ADV TechKnit Ultra"
+                  className="w-24 h-24 md:w-32 md:h-32 object-cover rounded-md"
+                />
                 <div>
                   <h3 className="text-lg font-medium">
                     Nike Dri-FIT ADV TechKnit Ultra
@@ -55,8 +60,13 @@ const card = () => {
 
             <div className="flex flex-col md:flex-row items-start justify-between border-b border-gray-300 pb-6 mb-6">
               <div className="flex gap-6">
-                  <Image src="/images/products/product-67.png" width={300} height={300} alt="Nike Dri-FIT ADV TechKnit Ultra"
-                  className="w-24 h-24 md:w-32 md:h-32 object-cover rounded-md"/>
+                <Image
+                  src="/images/products/product-67.png"
+                  width={300}
+                  height={300}
+                  alt="Nike Dri-FIT ADV TechKnit Ultra"
+                  className="w-24 h-24 md:w-32 md:h-32 object-cover rounded-md"
+                />
                 <div>
                   <h3 className="text-lg font-medium">Nike Air Max 97 SE</h3>
                   <p className="text-sm text-gray-600">Men's Shoes</p>
@@ -99,11 +109,11 @@ const card = () => {
                 <p>₹20,890.00</p>
               </div>
             </div>
-            <Link href ="/checkout">
-            <button className="bg-black text-white hover:bg-gray-700 py-2 px-4 rounded-full w-full font-medium text-[15px] leading-[24px]">
-        Member Checkout
-      </button>
-      </Link>
+            <Link href="/checkout">
+              <button className="bg-black text-white hover:bg-gray-700 py-2 px-4 rounded-full w-full font-medium text-[15px] leading-[24px]">
+                Member Checkout
+              </button>
+            </Link>
           </div>
         </div>
 

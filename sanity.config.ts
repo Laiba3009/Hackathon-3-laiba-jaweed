@@ -1,28 +1,25 @@
-'use client'
+'use client';
 
-/**
- * This configuration is used for the Sanity Studio that’s mounted on the `\src\app\studio\[[...tool]]\page.tsx` route
- */
+import { visionTool } from '@sanity/vision';
+import { defineConfig } from 'sanity';
+import { structureTool } from 'sanity/structure';
 
-import { visionTool } from '@sanity/vision'
-import { defineConfig } from 'sanity'
-import { structureTool } from 'sanity/structure'
+// Import environment variables
+import { apiVersion, dataset, projectId } from './src/app/sanity/env';
 
-// Correct the import paths for environment variables
-import { apiVersion, dataset, projectId } from './src/app/sanity/env' // Adjusted to point to `src/sanity/env`
-import {schema  } from './src/app/sanity/schemaTypes' // Adjusted to point to `src/sanity/schemaTypes`
+// Import schema
+import { schema } from './src/app/sanity/schemaTypes';
 
-// You should define your custom structure for the Sanity Studio
-import { structure } from './src/app/sanity/structure' // Ensure you have a structure file if needed
+// Import custom structure (if needed)
+import { structure } from './src/app/sanity/structure';
 
 export default defineConfig({
-  basePath: '/studio',
-  projectId,
-  dataset,
-  schema,
+  basePath: '/studio', // Base path for the Studio
+  projectId, // Project ID from environment variables
+  dataset, // Dataset from environment variables
+  schema, // Schema definitions
   plugins: [
-    structureTool({ structure }), // Ensure structure is defined and passed correctly
-    // Vision is for querying with GROQ from inside the Studio
-    visionTool({ defaultApiVersion: apiVersion }),
+    structureTool({ structure }), // Custom structure (if defined)
+    visionTool({ defaultApiVersion: apiVersion }), // GROQ query tool
   ],
-})
+});

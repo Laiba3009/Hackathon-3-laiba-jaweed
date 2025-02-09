@@ -5,10 +5,9 @@ import Hero from './hero/page';
 const HomePage: React.FC = () => {
   return (
     <div>
-   <Hero />
+      <Hero />
     </div>
   );
 };
 
 export default HomePage;
-

@@ -1,37 +1,39 @@
 'use client';
 
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { getCartItems, removeFromCart, updateCartQuantity } from "../utils/cart-action/page";  // Importing utility functions
-import Image from "next/image";
-import { urlFor } from "../sanity/lib/image";
-import Swal from "sweetalert2";
-import { useRouter } from "next/navigation";
-import { FaTrashCan } from "react-icons/fa6";
-import Product from "../types/page";
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { urlFor } from '../sanity/lib/image';
+import Swal from 'sweetalert2';
+import { useRouter } from 'next/navigation';
+import { FaTrashCan } from 'react-icons/fa6';
+import { Product } from '../types/product';
+import { getCartItems, removeFromCart, updateCartQuantity } from '../actions/actions';
 
 const CartPage = () => {
   const [cartItems, setCartItems] = useState<Product[]>([]);
 
   // Initialize cart items on mount
   useEffect(() => {
-    setCartItems(getCartItems());
+    if (typeof window !== 'undefined') {
+      setCartItems(getCartItems()); // Ensure this is only run on the client-side
+    }
   }, []);
 
   const handleRemove = (id: string) => {
     Swal.fire({
-      title: "Are you sure?",
+      title: 'Are you sure?',
       text: "You won't be able to undo this action!",
-      icon: "warning",
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
-      confirmButtonText: "Yes, remove it!",
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, remove it!',
     }).then((result) => {
       if (result.isConfirmed) {
         removeFromCart(id);
-        setCartItems(getCartItems());  // Sync state after removal
-        Swal.fire("Removed!", "Item has been removed from your cart.", "success");
+        setCartItems(getCartItems()); // Sync state after removal
+        Swal.fire('Removed!', 'Item has been removed from your cart.', 'success');
       }
     });
   };
@@ -44,14 +46,14 @@ const CartPage = () => {
   const handleIncrement = (id: string) => {
     const product = cartItems.find((item) => item._id === id);
     if (product) {
-      handleQuantityChange(id, product.inventory + 1);  // Increment the quantity
+      handleQuantityChange(id, product.inventory + 1); // Increment the quantity
     }
   };
 
   const handleDecrement = (id: string) => {
     const product = cartItems.find((item) => item._id === id);
     if (product && product.inventory > 1) {
-      handleQuantityChange(id, product.inventory - 1);  // Decrement the quantity
+      handleQuantityChange(id, product.inventory - 1); // Decrement the quantity
     }
   };
 
@@ -66,18 +68,17 @@ const CartPage = () => {
 
   const handleProceed = () => {
     Swal.fire({
-      title: "Processing your order...",
-      text: "Please wait a moment.",
-      icon: "info",
+      title: 'Processing your order...',
+      text: 'Please wait a moment.',
+      icon: 'info',
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Proceed",
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Proceed',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire("Success!", "Your order has been successfully processed!", "success");
-        router.push("/checkout");
-        // Clear the cart after proceeding (optional)
+        Swal.fire('Success!', 'Your order has been successfully processed!', 'success');
+        router.push('/checkout');
         setCartItems([]); // Clear the cart after order
       }
     });
@@ -122,7 +123,6 @@ const CartPage = () => {
                       +
                     </button>
 
-                    {/* Trash Icon next to the plus button */}
                     <button
                       onClick={() => handleRemove(item._id)}
                       className="ml-4 px-2 py-1 bg-red-500 text-white rounded-md hover:bg-red-600"
@@ -148,13 +148,13 @@ const CartPage = () => {
             </p>
           </div>
           <Link href="/checkout">
-             <button
-               onClick={handleProceed}
-               className="px-4 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-             >
-               Confirm to Checkout
-             </button>
-           </Link>
+            <button
+              onClick={handleProceed}
+              className="px-4 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+            >
+              Confirm to Checkout
+            </button>
+          </Link>
         </div>
       )}
     </div>

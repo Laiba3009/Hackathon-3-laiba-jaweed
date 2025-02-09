@@ -1,11 +1,11 @@
-"use client"
-import React, { useEffect, useState, useMemo } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { client } from "../sanity/lib/client";
-import { addToCart } from "../utils/cart-action/page";
-import Swal from "sweetalert2";
-import { Product } from "../types/page";
+'use client';
+import React, { useEffect, useState, useMemo } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { client } from '../sanity/lib/client';
+import Swal from 'sweetalert2';
+import { Product } from '../types/product';
+import addToCart from '../actions/actions';
 
 const ProductList: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -21,7 +21,7 @@ const ProductList: React.FC = () => {
   const fetchProducts = async () => {
     try {
       const query = `*[_type == "product"]{
-        _id,
+         _id,
         productName,
         description,
         category,
@@ -41,8 +41,8 @@ const ProductList: React.FC = () => {
       const data = await client.fetch(query);
       setProducts(data);
     } catch (error) {
-      setError("Failed to load products.");
-      console.error("Error fetching products:", error);
+      setError('Failed to load products.');
+      console.error('Error fetching products:', error);
     } finally {
       setLoading(false);
     }
@@ -54,8 +54,10 @@ const ProductList: React.FC = () => {
 
   // Filtering Logic
   const filteredData = useMemo(() => {
-    return products.filter(product => {
-      const matchesCategory = selectedCategory ? product.category === selectedCategory : true;
+    return products.filter((product) => {
+      const matchesCategory = selectedCategory
+        ? product.category === selectedCategory
+        : true;
       return matchesCategory;
     });
   }, [products, selectedCategory]);
@@ -75,7 +77,9 @@ const ProductList: React.FC = () => {
   };
 
   const categories = useMemo(() => {
-    const allCategories = [...new Set(products.map(product => product.category))];
+    const allCategories = [
+      ...new Set(products.map((product) => product.category)),
+    ];
     return allCategories;
   }, [products]);
 
@@ -83,18 +87,20 @@ const ProductList: React.FC = () => {
   const handleAddToCart = (e: React.MouseEvent, product: Product) => {
     e.preventDefault();
     Swal.fire({
-      position: "top-right",
-      icon: "success",
+      position: 'top-right',
+      icon: 'success',
       title: `${product.productName} added to cart`,
       showConfirmButton: false,
       timer: 1000,
     });
-    addToCart(product);
+   addToCart(product); // Correctly using addToCart function
   };
 
   return (
     <div className="p-4">
-      <h2 className="text-3xl font-semibold text-center mb-8">Products Display</h2>
+      <h2 className="text-3xl font-semibold text-center mb-8">
+        Products Display
+      </h2>
 
       {loading ? (
         <div className="text-center text-lg text-gray-500">Loading...</div>
@@ -106,7 +112,9 @@ const ProductList: React.FC = () => {
           <div className="mb-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Category Filter */}
             <div className="w-auto">
-              <label htmlFor="category" className="block font-semibold mb-2">Category</label>
+              <label htmlFor="category" className="block font-semibold mb-2">
+                Category
+              </label>
               <select
                 id="category"
                 value={selectedCategory}
@@ -114,8 +122,10 @@ const ProductList: React.FC = () => {
                 className="w-[200px] p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
               >
                 <option value="">All Categories</option>
-                {categories.map(category => (
-                  <option key={category} value={category}>{category}</option>
+                {categories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
                 ))}
               </select>
             </div>
@@ -139,7 +149,9 @@ const ProductList: React.FC = () => {
                         className="w-full h-64 object-contain rounded-md mb-4" // Using object-contain instead of object-cover
                       />
                     ) : (
-                      <p className="text-center text-gray-500">No image available</p>
+                      <p className="text-center text-gray-500">
+                        No image available
+                      </p>
                     )}
                   </Link>
                 ) : (
@@ -148,14 +160,20 @@ const ProductList: React.FC = () => {
 
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">
                   {product.slug?.current ? (
-                    <Link href={`/product/${product.slug.current}`}>{product.productName}</Link>
+                    <Link href={`/product/${product.slug.current}`}>
+                      {product.productName}
+                    </Link>
                   ) : (
                     <span>{product.productName}</span>
                   )}
                 </h3>
-                <span className="inline-block text-gray-500 text-xs mb-2">{product.category}</span>
+                <span className="inline-block text-gray-500 text-xs mb-2">
+                  {product.category}
+                </span>
                 <div className="flex justify-between items-center mt-4">
-                  <strong className="text-xl text-red-600">${product.price}</strong>
+                  <strong className="text-xl text-red-600">
+                    ${product.price}
+                  </strong>
                   <button
                     onClick={(e) => handleAddToCart(e, product)} // Add to cart action
                     className="text-white bg-black px-4 py-2 rounded-md transition-colors"
@@ -176,7 +194,9 @@ const ProductList: React.FC = () => {
             >
               Previous
             </button>
-            <span className="text-lg">Page {currentPage} of {totalPages}</span>
+            <span className="text-lg">
+              Page {currentPage} of {totalPages}
+            </span>
             <button
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}

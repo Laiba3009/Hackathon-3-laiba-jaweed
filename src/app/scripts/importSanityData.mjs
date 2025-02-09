@@ -15,7 +15,7 @@ const client = createClient({
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
   useCdn: false,
   token: process.env.SANITY_API_TOKEN,
-  apiVersion: '2021-08-31'
+  apiVersion: '2021-08-31',
 });
 
 async function uploadImageToSanity(imageUrl) {
@@ -24,7 +24,7 @@ async function uploadImageToSanity(imageUrl) {
     const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
     const buffer = Buffer.from(response.data);
     const asset = await client.assets.upload('image', buffer, {
-      filename: imageUrl.split('/').pop()
+      filename: imageUrl.split('/').pop(),
     });
     console.log(`Image uploaded successfully: ${asset._id}`);
     return asset._id;
@@ -38,10 +38,11 @@ async function importData() {
     console.log('migrating data please wait...');
 
     // API endpoint containing car data
-    const response = await axios.get('https://template-03-api.vercel.app/api/products');
+    const response = await axios.get(
+      'https://template-03-api.vercel.app/api/products'
+    );
     const products = response.data.data;
-    console.log("products ==>> ", products);
-
+    console.log('products ==>> ', products);
 
     for (const product of products) {
       let imageRef = null;
@@ -59,13 +60,15 @@ async function importData() {
         colors: product.colors || [], // Optional, as per your schema
         status: product.status,
         description: product.description,
-        image: imageRef ? {
-          _type: 'image',
-          asset: {
-            _type: 'reference',
-            _ref: imageRef,
-          },
-        } : undefined,
+        image: imageRef
+          ? {
+              _type: 'image',
+              asset: {
+                _type: 'reference',
+                _ref: imageRef,
+              },
+            }
+          : undefined,
       };
 
       await client.create(sanityProduct);

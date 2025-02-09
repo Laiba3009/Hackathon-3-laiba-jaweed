@@ -1,13 +1,13 @@
-import Image from "next/image";
-import ShopMensSlider from "../components/ShopMenSlider";
-import ShopWomensSlider from "../components/ShopWomenSlider";
-import ProductList from "../shose/page";
+import Image from 'next/image';
+import ShopMensSlider from '../components/ShopMenSlider';
+import ShopWomensSlider from '../components/ShopWomenSlider';
+import ProductList from '../shose/page';
 export default function Hero() {
   return (
     <div className="w-screen py-5 bg-gray-100">
       <div className="max-w-7xl mx-auto text-center">
         <Image
-          src="/assests/hero.png" 
+          src="/assests/hero.png"
           alt="nike"
           width={1200}
           height={600}
@@ -24,9 +24,10 @@ export default function Hero() {
         </h1>
 
         <p className="text-gray-800 text-lg sm:text-xl md:text-2xl max-w-full sm:max-w-2xl mx-auto mb-6 px-4 sm:px-6">
-  Extreme comfort. Hyper durable. Max volume. Introducing the Air Max
-  Pulse—designed to push you past your limits and help you go to the max.
-</p>
+          Extreme comfort. Hyper durable. Max volume. Introducing the Air Max
+          Pulse—designed to push you past your limits and help you go to the
+          max.
+        </p>
 
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
           <button className="px-6 py-3 bg-black text-white font-medium rounded-full hover:bg-gray-800 transition">
@@ -40,12 +41,14 @@ export default function Hero() {
 
       <div className="bg-white px-6 py-8">
         <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl text-black font-sans font-[500]">Best of Air Max</h2>
+          <h2 className="text-2xl text-black font-sans font-[500]">
+            Best of Air Max
+          </h2>
           <div className="flex space-x-2">
             <button className="px-4 py-2 font-bold rounded-full">Shop</button>
           </div>
         </div>
-          <ProductList />
+        <ProductList />
       </div>
 
       <div className="relative bg-white py-16 px-4">
@@ -70,25 +73,24 @@ export default function Hero() {
         </div>
       </div>
 
-
       <section className="px-10">
         <h2 className="font-bold">Gear Up</h2>
         <div className="grid grid-cols-12">
           {/* Men's products displayed in a slider */}
           <div className="col-span-12 md:col-span-6">
-            <ShopMensSlider/>
+            <ShopMensSlider />
           </div>
           {/* Women's products displayed in a slider */}
           <div className="col-span-12 md:col-span-6">
-            <ShopWomensSlider/>
+            <ShopWomensSlider />
           </div>
         </div>
       </section>
-          
+
       <div className="relative bg-white py-16 px-4">
-      <h2 className="text-3xl font-bold text-gray-900 mb-12 pt-6 pl-3 sm:pl-4 md:text-4xl lg:text-5xl">
-      Dont Miss
-</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-12 pt-6 pl-3 sm:pl-4 md:text-4xl lg:text-5xl">
+          Dont Miss
+        </h2>
 
         <div className="max-w-7xl mx-auto text-center">
           <Image
@@ -102,7 +104,8 @@ export default function Hero() {
             FLIGHT ESSENTIALS
           </h1>
           <p className="mt-4 text-lg text-gray-700">
-            Your built-to-last all-week wears—but with style only Jordan Brand can deliver.
+            Your built-to-last all-week wears—but with style only Jordan Brand
+            can deliver.
           </p>
           <button className="mt-6 px-6 py-3 bg-black text-white font-medium rounded-full hover:bg-gray-800 transition">
             Shop
@@ -112,8 +115,8 @@ export default function Hero() {
 
       {/* Essentials Section - Single Row Images */}
       <h2 className="text-3xl font-bold text-gray-900 mb-12 pt-6 pl-3 sm:pl-4 md:text-4xl lg:text-5xl">
-  ESSENTIALS
-</h2>
+        ESSENTIALS
+      </h2>
 
       <div className="flex flex-wrap justify-center gap-4">
         <div className="flex flex-col items-center">
@@ -170,14 +173,14 @@ export default function Hero() {
             <ul className="space-y-2 text-sm">
               <li>All Clothing</li>
               <li>Modest Wear</li>
-              <li>Hoodies  Pullovers</li>
-              <li>Shirts  Tops</li>
+              <li>Hoodies Pullovers</li>
+              <li>Shirts Tops</li>
             </ul>
           </div>
           <div className="text-center">
             <h3 className="font-bold mb-4">Kids</h3>
             <ul className="space-y-2 text-sm">
-              <li>Infant  Toddler Shoes</li>
+              <li>Infant Toddler Shoes</li>
               <li>Kids Shoes</li>
               <li>Kids Jordan Shoes</li>
               <li>Kids Basketball Shoes</li>

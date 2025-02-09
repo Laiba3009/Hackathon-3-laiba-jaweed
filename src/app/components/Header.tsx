@@ -1,12 +1,12 @@
-"use client";
-import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
-import { FaSearch } from "react-icons/fa";
-import { FaRegHeart } from "react-icons/fa6";
-import { BiShoppingBag } from "react-icons/bi";
-import { IoMenu } from "react-icons/io5";
-import { RxCross1 } from "react-icons/rx";
+'use client';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
+import { FaSearch } from 'react-icons/fa';
+import { FaRegHeart } from 'react-icons/fa6';
+import { BiShoppingBag } from 'react-icons/bi';
+import { IoMenu } from 'react-icons/io5';
+import { RxCross1 } from 'react-icons/rx';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,10 +29,24 @@ const Header = () => {
 
           {/* Right side links for large screens */}
           <div className="hidden sm:flex gap-2">
-            <Link href="#" className="hover:text-gray-800 text-[10px]">Find Link Store</Link>
-            <Link href="/contact-us" className="hover:text-gray-800 text-[10px]">Help</Link>
-            <Link href="/join-us" className="hover:text-gray-800 text-[10px]">Join Us</Link>
-            <Link href="/login" className="hover:text-gray-800 text-[10px]">Sign In</Link>
+          <Link href="/cart" className="hover:text-gray-800 pr-2 text-[15px]">
+            Shopping Cart
+            </Link>
+            <Link href="/checkout" className="hover:text-gray-800 pr-2 text-[15px]">
+              Checkout
+            </Link>
+            <Link
+              href="/contact-us"
+              className="hover:text-gray-800 pr-2 text-[15px]"
+            >
+              Help
+            </Link>
+            <Link href="/join-us" className="hover:text-gray-800 pr-2 text-[15px]">
+              Join Us
+            </Link>
+            <Link href="/login" className="hover:text-gray-800 text-[15px]">
+              Sign In
+            </Link>
           </div>
         </div>
 
@@ -51,12 +65,39 @@ const Header = () => {
 
           {/* Center section (Navigation Links) for large screens */}
           <nav className="hidden sm:flex gap-4 text-[14px] font-medium md:text-[16px] text-gray-700">
-            <Link href="/hero" className="hover:text-black whitespace-nowrap">New Featured</Link>
-            <Link href="/all-products" className="hover:text-black whitespace-nowrap">Men</Link>
-            <Link href="/all-products" className="hover:text-black whitespace-nowrap">Women</Link>
-            <Link href="/all-products" className="hover:text-black whitespace-nowrap">Kids</Link>
-            <Link href="/all-products" className="hover:text-black whitespace-nowrap">Sale</Link>
-            <Link href="/all-products" className="hover:text-black whitespace-nowrap">SNKRS</Link>
+            <Link href="/hero" className="hover:text-black whitespace-nowrap">
+              New Featured
+            </Link>
+            <Link
+              href="/all-products"
+              className="hover:text-black whitespace-nowrap"
+            >
+              Men
+            </Link>
+            <Link
+              href="/all-products"
+              className="hover:text-black whitespace-nowrap"
+            >
+              Women
+            </Link>
+            <Link
+              href="/all-products"
+              className="hover:text-black whitespace-nowrap"
+            >
+              Kids
+            </Link>
+            <Link
+              href="/all-products"
+              className="hover:text-black whitespace-nowrap"
+            >
+              Sale
+            </Link>
+            <Link
+              href="/all-products"
+              className="hover:text-black whitespace-nowrap"
+            >
+              SNKRS
+            </Link>
           </nav>
 
           {/* Right section (Search, Wishlist, Cart) */}
@@ -124,18 +165,56 @@ const Header = () => {
 
           {/* Sidebar Links */}
           <ul className="space-y-6 mt-6">
-            <li><Link href="/hero" onClick={toggleMenu}>New & Featured</Link></li>
-            <li><Link href="/all-products" onClick={toggleMenu}>Men</Link></li>
-            <li><Link href="/all-products" onClick={toggleMenu}>Women</Link></li>
-            <li><Link href="/all-products" onClick={toggleMenu}>Kids</Link></li>
-            <li><Link href="/all-products" onClick={toggleMenu}>Sale</Link></li>
-            <li><Link href="/all-products" onClick={toggleMenu}>SNKRS</Link></li>
-            <li className="border-t-2 pt-6">
-              <Link href="#" onClick={toggleMenu}>Find a Store</Link>
+            <li>
+              <Link href="/hero" onClick={toggleMenu}>
+                New & Featured
+              </Link>
             </li>
-            <li><Link href="/contact-us" onClick={toggleMenu}>Help</Link></li>
-            <li><Link href="/join-us" onClick={toggleMenu}>Join Us</Link></li>
-            <li><Link href="/login" onClick={toggleMenu}>Sign In</Link></li>
+            <li>
+              <Link href="/all-products" onClick={toggleMenu}>
+                Men
+              </Link>
+            </li>
+            <li>
+              <Link href="/all-products" onClick={toggleMenu}>
+                Women
+              </Link>
+            </li>
+            <li>
+              <Link href="/all-products" onClick={toggleMenu}>
+                Kids
+              </Link>
+            </li>
+            <li>
+              <Link href="/all-products" onClick={toggleMenu}>
+                Sale
+              </Link>
+            </li>
+            <li>
+              <Link href="/all-products" onClick={toggleMenu}>
+                SNKRS
+              </Link>
+            </li>
+            <li className="border-t-2 pt-6">
+              <Link href="#" onClick={toggleMenu}>
+                Find a Store
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact-us" onClick={toggleMenu}>
+                Help
+              </Link>
+            </li>
+            <li>
+              <Link href="/join-us" onClick={toggleMenu}>
+                Join Us
+              </Link>
+            </li>
+            <li>
+              <Link href="/login" onClick={toggleMenu}>
+                Sign In
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

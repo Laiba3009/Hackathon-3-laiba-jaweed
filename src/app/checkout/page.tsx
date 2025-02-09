@@ -1,27 +1,27 @@
 'use client';
 
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { CgChevronRight } from "react-icons/cg";
-import { getCartItems } from "../utils/cart-action/page";
-import Swal from "sweetalert2";
-import { urlFor } from "../sanity/lib/image";
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { CgChevronRight } from 'react-icons/cg';
+import Swal from 'sweetalert2';
+import { urlFor } from '../sanity/lib/image';
 import { toast } from 'react-toastify';
-import { client } from "../sanity/lib/client";
-import { Product } from "../types/page";
+import { client } from '../sanity/lib/client';
+import { Product } from '../types/product';
+import { getCartItems } from '../actions/actions';
 
 export default function CheckoutPage() {
   const [cartItems, setCartItems] = useState<Product[]>([]);
   const [discount, setDiscount] = useState<number>(0);
   const [formValues, setFormValues] = useState({
-    firstName: "",
-    lastName: "",
-    address: "",
-    city: "",
-    zipCode: "",
-    phone: "",
-    email: "",
+    firstName: '',
+    lastName: '',
+    address: '',
+    city: '',
+    zipCode: '',
+    phone: '',
+    email: '',
   });
 
   const [formErrors, setFormErrors] = useState({
@@ -36,7 +36,7 @@ export default function CheckoutPage() {
 
   useEffect(() => {
     setCartItems(getCartItems());
-    const appliedDiscount = localStorage.getItem("appliedDiscount");
+    const appliedDiscount = localStorage.getItem('appliedDiscount');
     if (appliedDiscount) {
       setDiscount(Number(appliedDiscount));
     }
@@ -79,16 +79,16 @@ export default function CheckoutPage() {
   const handlePlaceOrder = async () => {
     if (validateForm()) {
       Swal.fire({
-        title: "Processing your order...",
-        text: "Please wait a moment.",
-        icon: "info",
+        title: 'Processing your order...',
+        text: 'Please wait a moment.',
+        icon: 'info',
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Proceed",
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Proceed',
       }).then(async (result) => {
         if (result.isConfirmed) {
-          localStorage.removeItem("appliedDiscount");
+          localStorage.removeItem('appliedDiscount');
 
           // Prepare the order data to be sent to the database
           const orderData = {
@@ -100,9 +100,9 @@ export default function CheckoutPage() {
             zipCode: formValues.zipCode,
             phone: formValues.phone,
             email: formValues.email,
-            cartItems: cartItems.map(item => ({
+            cartItems: cartItems.map((item) => ({
               _type: 'reference',
-              _ref: item._id
+              _ref: item._id,
             })),
             total: total,
             discount: discount,
@@ -113,19 +113,33 @@ export default function CheckoutPage() {
             // Save the order data to the database
             await client.create(orderData);
             // Show success toast notification
-            toast.success("Your order has been placed successfully!");
-            Swal.fire("Success!", "Your order has been successfully processed!", "success");
+            toast.success('Your order has been placed successfully!');
+            Swal.fire(
+              'Success!',
+              'Your order has been successfully processed!',
+              'success'
+            );
           } catch (error) {
-            console.error("Error creating order:", error);
+            console.error('Error creating order:', error);
             // Show error toast notification in case of failure
-            toast.error("There was an issue placing your order. Please try again.");
-            Swal.fire("Error", "There was an issue processing your order.", "error");
+            toast.error(
+              'There was an issue placing your order. Please try again.'
+            );
+            Swal.fire(
+              'Error',
+              'There was an issue processing your order.',
+              'error'
+            );
           }
         }
       });
     } else {
-      Swal.fire("Error", "Please fill in all the fields correctly before proceeding.", "error");
-      toast.error("Please fill in all the fields correctly.");
+      Swal.fire(
+        'Error',
+        'Please fill in all the fields correctly before proceeding.',
+        'error'
+      );
+      toast.error('Please fill in all the fields correctly.');
     }
   };
 
@@ -208,7 +222,9 @@ export default function CheckoutPage() {
                   className={`border border-gray-300 focus:outline-none focus:border-blue-500 hover:border-blue-500 ${formErrors.firstName ? 'border-red-500' : ''}`}
                 />
                 {formErrors.firstName && (
-                  <p className="text-sm text-red-500">First name is required.</p>
+                  <p className="text-sm text-red-500">
+                    First name is required.
+                  </p>
                 )}
               </div>
               <div>
@@ -287,7 +303,9 @@ export default function CheckoutPage() {
                 className={`border border-gray-300 focus:outline-none focus:border-blue-500 hover:border-blue-500 ${formErrors.email ? 'border-red-500' : ''}`}
               />
               {formErrors.email && (
-                <p className="text-sm text-red-500">Please enter a valid email.</p>
+                <p className="text-sm text-red-500">
+                  Please enter a valid email.
+                </p>
               )}
             </div>
             <button
